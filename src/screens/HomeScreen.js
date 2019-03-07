@@ -15,14 +15,16 @@ class HomeScreen extends Component {
     }
 
     componentDidMount() {
-        
-        axios.post(Api.home_page_endpoint, 
-            { id: 1},
-            { headers: { 'Content-Type': 'application/json'}}
-            ).then((response) => {
-                console.log(response.data);
-                this.setState({data: response.data});
-            })
+        let data = new FormData();
+        data.append('id', 1);
+
+        axios.post(Api.home_page_endpoint,
+            data,
+            {headers: {'Content-Type': 'multipart/form-data'}}
+        ).then((response) => {
+            console.log(response.data);
+            this.setState({data: response.data});
+        })
             .catch((err) => {
                 console.log(err);
             });
