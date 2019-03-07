@@ -7,7 +7,12 @@ const AppNavigator = createStackNavigator({
     Home: HomeScreen,
     DepartmentDetails: DepartmentDetails
 }, {
-    initialRouteName: "Home"
+    initialRouteName: "Home",
+    defaultNavigationOptions: {
+        headerStyle: {
+            backgroundColor: 'orange'
+        }
+    }
 });
 
 const AppContainer = createAppContainer(AppNavigator);

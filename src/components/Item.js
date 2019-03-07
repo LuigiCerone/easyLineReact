@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import {View, Text, Image, TouchableWithoutFeedback} from 'react-native';
+import { View, Text, Image, TouchableWithoutFeedback } from 'react-native';
+import { withNavigation } from 'react-navigation';
 
 import {Colors} from '../constants';
 
 class Item extends Component {
-
     constructor(props) {
         super(props);
     };
@@ -43,9 +43,7 @@ class Item extends Component {
                 onPress={() => this.onPress()}
             >
                 <View style={styles.containerStyle}>
-                    <Text>{item.id}</Text>
                     <Text>{item.name}</Text>
-                    <Text>{item.visible}</Text>
                 </View>
             </TouchableWithoutFeedback>
         );
@@ -56,7 +54,7 @@ const styles = {
     containerStyle: {
         borderColor: Colors.border,
         borderWidth: 1,
-        marginBottom: 10,
+        padding: 20,
         notSelected: {
             backgroundColor: Colors.white
         },
@@ -86,4 +84,4 @@ const styles = {
     // }
 };
 
-export default Item;
+export default withNavigation(Item);

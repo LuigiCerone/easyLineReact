@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {FlatList} from 'react-native';
+import {FlatList, Text, View} from 'react-native';
 import axios from 'axios';
 import Item from '../components/Item';
 import {Api} from '../constants';
