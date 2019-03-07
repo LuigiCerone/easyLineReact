@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, Image, TouchableWithoutFeedback} from 'react-native';
 
-import { Colors } from '../constants';
+import {Colors} from '../constants';
 
 class Item extends Component {
 
@@ -10,7 +10,11 @@ class Item extends Component {
     };
 
     onPress = () => {
-        // this.setState({selected: !this.state.selected});
+        // this.setState({selected: !this.state.selected}
+        console.log("Item clicked");
+
+        // Dove va questo?
+        this.props.navigation.navigate('DepartmentDetails')
     };
 
     render() {

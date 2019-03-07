@@ -31,7 +31,7 @@ class HomeScreen extends Component {
     }
 
     keyExtractor(item) {
-        return item.title;
+        return `${item.id}`;
     }
 
     renderItem({item}) {
