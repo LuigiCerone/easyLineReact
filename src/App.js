@@ -1,40 +1,18 @@
 import React from "react";
 import {View, Text} from "react-native";
 import {createStackNavigator, createAppContainer} from "react-navigation";
+import HomeScreen from "./Screens/HomeScreen";
 
-class HomeScreen extends React.Component {
+const AppNavigator = createStackNavigator({
+    Home: HomeScreen
+  });
+
+const AppContainer = createAppContainer(AppNavigator);
+
+class App extends React.Component {
     render() {
-        return (
-            <View style={{flex: 1, alignItems: "center", justifyContent: "center"}}>
-                <Text>Home Screen</Text>
-            </View>
-        );
+        return <AppContainer />;
     }
 }
 
-const AppNavigator = createStackNavigator({
-    Home: {
-        screen: HomeScreen
-    }
-});
-
-export default createAppContainer(AppNavigator);
-
-// const styles = StyleSheet.create({
-//     container: {
-//         flex: 1,
-//         justifyContent: 'center',
-//         alignItems: 'center',
-//         backgroundColor: '#F5FCFF',
-//     },
-//     welcome: {
-//         fontSize: 20,
-//         textAlign: 'center',
-//         margin: 10,
-//     },
-//     instructions: {
-//         textAlign: 'center',
-//         color: '#333333',
-//         marginBottom: 5,
-//     },
-// });
+export default App;
