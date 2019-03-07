@@ -15,9 +15,12 @@ class HomeScreen extends Component {
     }
 
     componentDidMount() {
-        const url = Api.url;
-        axios.get(url)
-            .then((response) => {
+        
+        axios.post(Api.home_page_endpoint, 
+            { id: 1},
+            { headers: { 'Content-Type': 'application/json'}}
+            ).then((response) => {
+                console.log(response.data);
                 this.setState({data: response.data});
             })
             .catch((err) => {

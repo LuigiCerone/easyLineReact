@@ -41,7 +41,7 @@ class Item extends Component {
             >
                 {/*<View style={containerTouchStyle}>*/}
                 <View>
-                    {item.id}
+                    <Text>{item.id}</Text>
                 </View>
             </TouchableWithoutFeedback>
         );
