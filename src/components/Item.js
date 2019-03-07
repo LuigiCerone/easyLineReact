@@ -7,63 +7,41 @@ class Item extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            selected: false
-        };
     };
 
     onPress = () => {
-        this.setState({selected: !this.state.selected});
+        // this.setState({selected: !this.state.selected});
     };
 
     render() {
         const {item} = this.props;
         const {image, title, artist} = item;
-        const {
-            containerStyle,
-            containerItemStyle,
-            containerDescriptionStyle,
-            imageStyle,
-            textStyle
-        } = styles;
+        // const {
+        //     containerStyle,
+        //     containerItemStyle,
+        //     containerDescriptionStyle,
+        //     imageStyle,
+        //     textStyle
+        // } = styles;
 
-        const containerTouchStyle =
-            this.state.selected ?
-                {
-                    ...containerStyle,
-                    ...containerStyle.selected
-                } :
-                {
-                    ...containerStyle,
-                    ...containerStyle.notSelected
-                };
+        // const containerTouchStyle =
+        //     this.state.selected ?
+        //         {
+        //             ...containerStyle,
+        //             ...containerStyle.selected
+        //         } :
+        //         {
+        //             ...containerStyle,
+        //             ...containerStyle.notSelected
+        //         };
 
         return (
             <TouchableWithoutFeedback
                 onPress={() => this.onPress()}
             >
-                <View style={containerTouchStyle}>
-                    {/*<View style={containerItemStyle}>*/}
-                    {/*<Image*/}
-                    {/*style={imageStyle}*/}
-                    {/*source={{uri: image}}*/}
-                    {/*/>*/}
-                    {/*<Text style={textStyle}>{title}</Text>*/}
-                    {/*<Counter/>*/}
-                    {/*</View>*/}
-                    {/*{this.state.selected &&*/}
-                    {/*<View>*/}
-                    {/*<View*/}
-                    {/*style={{*/}
-                    {/*height: 1,*/}
-                    {/*backgroundColor: #FFFFFF;*/}
-                    {/*}}*/}
-                    {/*/>*/}
-                    {/*<Text*/}
-                    {/*style={containerDescriptionStyle}*/}
-                    {/*>Artist: {artist}</Text>*/}
-                    {/*</View>*/}
-                    {/*}*/}
+                {/*<View style={containerTouchStyle}>*/}
+                <View>
+                    {item.id}
                 </View>
             </TouchableWithoutFeedback>
         );
