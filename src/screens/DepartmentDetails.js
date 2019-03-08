@@ -15,6 +15,9 @@ class DepartmentDetails extends Component {
     }
 
     componentDidMount() {
+        // const {navigation} = this.props;
+        const item = this.props.navigation.getParam('item', null);
+        this.setState({item: item});
         // let data = new FormData();
         // data.append('id', 1);
         //
@@ -32,7 +35,7 @@ class DepartmentDetails extends Component {
 
     render() {
         return (
-            <View><Text>Test</Text></View>
+            <View><Text>Test: {this.state.item.id}</Text></View>
         );
     }
 }
