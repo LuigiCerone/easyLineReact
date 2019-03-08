@@ -7,10 +7,18 @@ import {Colors} from '../constants';
 class Course extends Component {
     constructor(props) {
         super(props);
+
+        debugger;
+
+        this.setState({
+            course: props.course,
+            departmentId: props.departmentId
+        });
+
+        console.log("Here");
     };
 
     componentDidMount() {
-        this.setState({course: this.props.course});
     };
 
     onPress = () => {
@@ -18,6 +26,7 @@ class Course extends Component {
         console.log("Item clicked");
 
         this.props.navigation.navigate('ActionListScreen', {
+            departmentId: this.state.departmentId,
             course: this.state.course
         });
     };

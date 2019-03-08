@@ -9,21 +9,23 @@ class CourseListScreen extends Component {
 
     constructor(props) {
         super(props);
+
+        let departmentId = this.props.navigation.getParam('departmentId', null);
+
         this.state = {
             data: [],
-            department: null
+            departmentId: departmentId
         };
     }
 
     componentDidMount() {
 
         // const {navigation} = this.props;
-        let department = this.props.navigation.getParam('department', null);
-        this.setState({department: department});
+        // this.setState({department: department});
 
 
         let data = new FormData();
-        data.append('provid', department.id);
+        data.append('provid', this.state.departmentId);
         data.append('id', '');
 
         axios.post(Api.second_page_endpoint,
@@ -41,19 +43,23 @@ class CourseListScreen extends Component {
     keyExtractor(department) {
         return `${department.id}`;
     }
+        debugger;
 
-    renderItem(course) {
+    renderItem(course, id) {
         return (
-            <Course course={course.item}/>
+            <Course course={course.item} departmentId={id}/>
         );
     }
 
     render() {
+        const departmentId = this.state.departmentId;
         return (
             <FlatList
                 data={this.state.data}
                 keyExtractor={this.keyExtractor}
-                renderItem={this.renderItem}
+                renderItem={(course) => {
+                    this.renderItem(course, departmentId)
+                }}
             />
         );
     }

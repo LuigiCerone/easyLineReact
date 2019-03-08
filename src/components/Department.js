@@ -7,18 +7,21 @@ import {Colors} from '../constants';
 class Department extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {department: this.props.department};
+
+
     };
 
     componentDidMount() {
-        this.setState({department: this.props.department});
     };
 
     onPress = () => {
         // this.setState({selected: !this.state.selected}
-        console.log("Department clicked");
+        console.log("Department clicked with :" + this.state.department.id);
 
         this.props.navigation.navigate('CourseListScreen', {
-            department: this.state.department
+            departmentId: this.state.department.id
         });
     };
 
