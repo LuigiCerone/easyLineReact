@@ -2,12 +2,12 @@ import React from "react";
 import {createStackNavigator, createAppContainer} from "react-navigation";
 import {Text, View} from 'react-native';
 import {SideMenu, List, ListItem} from "react-native-elements";
-import HomeScreen from "./screens/HomeScreen";
-import DepartmentDetails from "./screens/DepartmentDetails";
+import DepartmentListScreen from "./screens/DepartmentListScreen";
+import CourseListScreen from "./screens/CourseListScreen";
 
 const AppNavigator = createStackNavigator({
-    Home: HomeScreen,
-    DepartmentDetails: DepartmentDetails
+    Home: DepartmentListScreen,
+    DepartmentDetails: CourseListScreen
 }, {
     initialRouteName: "Home",
     defaultNavigationOptions: {

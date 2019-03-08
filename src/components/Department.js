@@ -17,7 +17,7 @@ class Department extends Component {
         // this.setState({selected: !this.state.selected}
         console.log("Department clicked");
 
-        this.props.navigation.navigate('DepartmentDetails', {
+        this.props.navigation.navigate('CourseListScreen', {
             department: this.state.department
         });
     };

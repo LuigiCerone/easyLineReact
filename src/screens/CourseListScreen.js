@@ -1,24 +1,32 @@
 import React, {Component} from 'react';
-import {FlatList} from 'react-native';
+import {FlatList, Text, View} from 'react-native';
 import axios from 'axios';
-import Department from '../components/Department';
+import Course from '../components/Course';
 import {Api} from '../constants';
 
 
-class HomeScreen extends Component {
+class CourseListScreen extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            data: []
+            data: [],
+            department: null
         };
     }
 
     componentDidMount() {
-        let data = new FormData();
-        data.append('id', 1);
 
-        axios.post(Api.home_page_endpoint,
+        // const {navigation} = this.props;
+        let department = this.props.navigation.getParam('department', null);
+        this.setState({department: department});
+
+
+        let data = new FormData();
+        data.append('provid', department.id);
+        data.append('id', '');
+
+        axios.post(Api.second_page_endpoint,
             data,
             {headers: {'Content-Type': 'multipart/form-data'}}
         ).then((response) => {
@@ -34,9 +42,9 @@ class HomeScreen extends Component {
         return `${department.id}`;
     }
 
-    renderItem(department) {
+    renderItem(course) {
         return (
-            <Department department={department.item}/>
+            <Course course={course.item}/>
         );
     }
 
@@ -51,5 +59,5 @@ class HomeScreen extends Component {
     }
 }
 
-export default HomeScreen;
+export default CourseListScreen;
 

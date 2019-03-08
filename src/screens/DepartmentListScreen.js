@@ -1,32 +1,24 @@
 import React, {Component} from 'react';
-import {FlatList, Text, View} from 'react-native';
+import {FlatList} from 'react-native';
 import axios from 'axios';
-import Item from '../components/Department';
+import Department from '../components/Department';
 import {Api} from '../constants';
 
 
-class CourseDetails extends Component {
+class DepartmentListScreen extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            data: [],
-            item: null
+            data: []
         };
     }
 
     componentDidMount() {
-
-        // const {navigation} = this.props;
-        let department = this.props.navigation.getParam('department', null);
-        this.setState({department: department});
-
-
         let data = new FormData();
-        data.append('provid', item.id);
-        data.append('id', '');
+        data.append('id', 1);
 
-        axios.post(Api.third_page_endpoint,
+        axios.post(Api.home_page_endpoint,
             data,
             {headers: {'Content-Type': 'multipart/form-data'}}
         ).then((response) => {
@@ -38,18 +30,17 @@ class CourseDetails extends Component {
             });
     }
 
-    keyExtractor(item) {
-        return `${item.id}`;
+    keyExtractor(department) {
+        return `${department.id}`;
     }
 
-    renderItem({item}) {
+    renderItem(department) {
         return (
-            <Item item={item}/>
+            <Department department={department.item}/>
         );
     }
 
     render() {
-        let item = this.state.item;
         return (
             <FlatList
                 data={this.state.data}
@@ -60,5 +51,5 @@ class CourseDetails extends Component {
     }
 }
 
-export default CourseDetails;
+export default DepartmentListScreen;
 

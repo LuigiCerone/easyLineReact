@@ -17,7 +17,7 @@ class Course extends Component {
         // this.setState({selected: !this.state.selected}
         console.log("Item clicked");
 
-        this.props.navigation.navigate('CourseDetails', {
+        this.props.navigation.navigate('ActionListScreen', {
             course: this.state.course
         });
     };
