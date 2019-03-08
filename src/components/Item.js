@@ -1,20 +1,23 @@
 import React, {Component} from 'react';
-import { View, Text, Image, TouchableWithoutFeedback } from 'react-native';
-import { withNavigation } from 'react-navigation';
+import {View, Text, Image, TouchableWithoutFeedback} from 'react-native';
+import {withNavigation} from 'react-navigation';
 
 import {Colors} from '../constants';
 
 class Item extends Component {
     constructor(props) {
         super(props);
+
+        this.setState({item: props.item});
     };
 
     onPress = () => {
         // this.setState({selected: !this.state.selected}
         console.log("Item clicked");
 
-        // Dove va questo?
-        this.props.navigation.navigate('DepartmentDetails')
+        this.props.navigation.navigate('DepartmentDetails', {
+            item: this.state.item
+        });
     };
 
     render() {
