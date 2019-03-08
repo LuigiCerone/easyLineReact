@@ -1,15 +1,17 @@
 import React from "react";
 import {createStackNavigator, createAppContainer} from "react-navigation";
 import {Text, View} from 'react-native';
-import {SideMenu, List, ListItem} from "react-native-elements";
+import {SideMenu, List} from "react-native-elements";
 import DepartmentListScreen from "./screens/DepartmentListScreen";
 import CourseListScreen from "./screens/CourseListScreen";
+import ActionListScreen from "./screens/ActionListScreen";
 
 const AppNavigator = createStackNavigator({
-    Home: DepartmentListScreen,
-    DepartmentDetails: CourseListScreen
+    DepartmentListScreen: DepartmentListScreen,
+    CourseListScreen: CourseListScreen,
+    ActionListScreen: ActionListScreen
 }, {
-    initialRouteName: "Home",
+    initialRouteName: "DepartmentListScreen",
     defaultNavigationOptions: {
         headerStyle: {
             backgroundColor: 'orange'
