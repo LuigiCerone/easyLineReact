@@ -23,7 +23,7 @@ class Department extends Component {
     };
 
     render() {
-        let {department} = this.props;
+        const {department} = this.props;
 
         return (
             <TouchableWithoutFeedback

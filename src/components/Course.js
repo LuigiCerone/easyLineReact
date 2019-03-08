@@ -9,8 +9,8 @@ class Course extends Component {
         super(props);
     };
 
-    componentDidMount(){
-        this.setState({item: this.props.item});
+    componentDidMount() {
+        this.setState({course: this.props.course});
     };
 
     onPress = () => {
@@ -18,37 +18,19 @@ class Course extends Component {
         console.log("Item clicked");
 
         this.props.navigation.navigate('CourseDetails', {
-            item: this.state.item
+            course: this.state.course
         });
     };
 
     render() {
-        const {item} = this.props;
-        // const {
-        //     containerStyle,
-        //     containerItemStyle,
-        //     containerDescriptionStyle,
-        //     imageStyle,
-        //     textStyle
-        // } = styles;
-
-        // const containerTouchStyle =
-        //     this.state.selected ?
-        //         {
-        //             ...containerStyle,
-        //             ...containerStyle.selected
-        //         } :
-        //         {
-        //             ...containerStyle,
-        //             ...containerStyle.notSelected
-        //         };
+        const {course} = this.props;
 
         return (
             <TouchableWithoutFeedback
                 onPress={() => this.onPress()}
             >
                 <View style={styles.containerStyle}>
-                    <Text>{item.name}</Text>
+                    <Text>{course.name}</Text>
                 </View>
             </TouchableWithoutFeedback>
         );

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {FlatList, Text, View} from 'react-native';
 import axios from 'axios';
-import Department from '../components/Department';
+import Course from '../components/Course';
 import {Api} from '../constants';
 
 
@@ -42,9 +42,9 @@ class DepartmentDetails extends Component {
         return `${department.id}`;
     }
 
-    renderItem({department}) {
+    renderItem(course) {
         return (
-            <Department department={department}/>
+            <Course course={course.item}/>
         );
     }
 

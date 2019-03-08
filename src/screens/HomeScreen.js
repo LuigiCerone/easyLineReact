@@ -34,9 +34,9 @@ class HomeScreen extends Component {
         return `${department.id}`;
     }
 
-    renderItem({department}) {
+    renderItem(department) {
         return (
-            <Department department={department}/>
+            <Department department={department.item}/>
         );
     }
 

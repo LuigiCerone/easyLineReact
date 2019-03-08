@@ -1,7 +1,7 @@
 import React from "react";
 import {createStackNavigator, createAppContainer} from "react-navigation";
-import { Text, View } from 'react-native';
-import { SideMenu, List, ListItem } from "react-native-elements";
+import {Text, View} from 'react-native';
+import {SideMenu, List, ListItem} from "react-native-elements";
 import HomeScreen from "./screens/HomeScreen";
 import DepartmentDetails from "./screens/DepartmentDetails";
 
@@ -20,14 +20,15 @@ const AppNavigator = createStackNavigator({
 const AppContainer = createAppContainer(AppNavigator);
 
 class App extends React.Component {
-    constructor () {
+    constructor() {
         super();
         this.state = {
             isOpen: false
         };
         this.toggleSideMenu = this.toggleSideMenu.bind(this)
     }
-    toggleSideMenu () {
+
+    toggleSideMenu() {
         this.setState({
             isOpen: !this.state.isOpen
         })
@@ -41,12 +42,8 @@ class App extends React.Component {
         );
 
         return (
-
-            <SideMenu
-                isOpen={this.state.isOpen}
-                menu={MenuComponent}>
-                <AppContainer toggleSideMenu={this.toggleSideMenu.bind(this)} />
-            </SideMenu>)
+            <AppContainer/>
+        )
     }
 }
 
