@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
 import {FlatList, Text, View} from 'react-native';
 import axios from 'axios';
-import Department from '../components/Department';
+import Item from '../components/Department';
 import {Api} from '../constants';
 
 
-class DepartmentDetails extends Component {
+class CourseDetails extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
             data: [],
-            department: null
+            item: null
         };
     }
 
@@ -23,10 +23,10 @@ class DepartmentDetails extends Component {
 
 
         let data = new FormData();
-        data.append('provid', department.id);
+        data.append('provid', item.id);
         data.append('id', '');
 
-        axios.post(Api.second_page_endpoint,
+        axios.post(Api.third_page_endpoint,
             data,
             {headers: {'Content-Type': 'multipart/form-data'}}
         ).then((response) => {
@@ -38,17 +38,18 @@ class DepartmentDetails extends Component {
             });
     }
 
-    keyExtractor(department) {
-        return `${department.id}`;
+    keyExtractor(item) {
+        return `${item.id}`;
     }
 
-    renderItem({department}) {
+    renderItem({item}) {
         return (
-            <Department department={department}/>
+            <Item item={item}/>
         );
     }
 
     render() {
+        let item = this.state.item;
         return (
             <FlatList
                 data={this.state.data}
@@ -59,5 +60,5 @@ class DepartmentDetails extends Component {
     }
 }
 
-export default DepartmentDetails;
+export default CourseDetails;
 

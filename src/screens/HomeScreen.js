@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {FlatList} from 'react-native';
 import axios from 'axios';
-import Item from '../components/Item';
+import Department from '../components/Department';
 import {Api} from '../constants';
 
 
@@ -30,13 +30,13 @@ class HomeScreen extends Component {
             });
     }
 
-    keyExtractor(item) {
-        return `${item.id}`;
+    keyExtractor(department) {
+        return `${department.id}`;
     }
 
-    renderItem({item}) {
+    renderItem({department}) {
         return (
-            <Item item={item}/>
+            <Department department={department}/>
         );
     }
 

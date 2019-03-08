@@ -4,51 +4,33 @@ import {withNavigation} from 'react-navigation';
 
 import {Colors} from '../constants';
 
-class Item extends Component {
+class Department extends Component {
     constructor(props) {
         super(props);
     };
 
-    componentDidMount(){
-        this.setState({item: this.props.item});
+    componentDidMount() {
+        this.setState({department: this.props.department});
     };
 
     onPress = () => {
         // this.setState({selected: !this.state.selected}
-        console.log("Item clicked");
+        console.log("Department clicked");
 
         this.props.navigation.navigate('DepartmentDetails', {
-            item: this.state.item
+            department: this.state.department
         });
     };
 
     render() {
-        const {item} = this.props;
-        // const {
-        //     containerStyle,
-        //     containerItemStyle,
-        //     containerDescriptionStyle,
-        //     imageStyle,
-        //     textStyle
-        // } = styles;
-
-        // const containerTouchStyle =
-        //     this.state.selected ?
-        //         {
-        //             ...containerStyle,
-        //             ...containerStyle.selected
-        //         } :
-        //         {
-        //             ...containerStyle,
-        //             ...containerStyle.notSelected
-        //         };
+        let {department} = this.props;
 
         return (
             <TouchableWithoutFeedback
                 onPress={() => this.onPress()}
             >
                 <View style={styles.containerStyle}>
-                    <Text>{item.name}</Text>
+                    <Text>{department.name}</Text>
                 </View>
             </TouchableWithoutFeedback>
         );
@@ -89,4 +71,4 @@ const styles = {
     // }
 };
 
-export default withNavigation(Item);
+export default withNavigation(Department);
