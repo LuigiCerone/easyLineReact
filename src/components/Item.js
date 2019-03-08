@@ -7,8 +7,10 @@ import {Colors} from '../constants';
 class Item extends Component {
     constructor(props) {
         super(props);
+    };
 
-        this.setState({item: props.item});
+    componentDidMount(){
+        this.setState({item: this.props.item});
     };
 
     onPress = () => {

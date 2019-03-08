@@ -10,32 +10,52 @@ class DepartmentDetails extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: []
+            data: [],
+            item: null
         };
     }
 
     componentDidMount() {
+
         // const {navigation} = this.props;
-        const item = this.props.navigation.getParam('item', null);
+        let item = this.props.navigation.getParam('item', null);
         this.setState({item: item});
-        // let data = new FormData();
-        // data.append('id', 1);
-        //
-        // axios.post(Api.home_page_endpoint,
-        //     data,
-        //     {headers: {'Content-Type': 'multipart/form-data'}}
-        // ).then((response) => {
-        //     console.log(response.data);
-        //     this.setState({data: response.data});
-        // })
-        //     .catch((err) => {
-        //         console.log(err);
-        //     });
+
+
+        let data = new FormData();
+        data.append('provid', item.id);
+        data.append('id', '');
+
+        axios.post(Api.second_page_endpoint,
+            data,
+            {headers: {'Content-Type': 'multipart/form-data'}}
+        ).then((response) => {
+            console.log(response.data);
+            this.setState({data: response.data});
+        })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
+    keyExtractor(item) {
+        return `${item.id}`;
+    }
+
+    renderItem({item}) {
+        return (
+            <Item item={item}/>
+        );
     }
 
     render() {
+        let item = this.state.item;
         return (
-            <View><Text>Test: {this.state.item.id}</Text></View>
+            <FlatList
+                data={this.state.data}
+                keyExtractor={this.keyExtractor}
+                renderItem={this.renderItem}
+            />
         );
     }
 }
