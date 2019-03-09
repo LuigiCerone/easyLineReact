@@ -4,33 +4,27 @@ import {withNavigation} from 'react-navigation';
 
 import {Colors} from '../constants';
 
-class Action extends Component {
+class Office extends Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-            action: props.action,
-        };
     };
 
     onPress = () => {
-        console.log("Action clicked");
-
-        this.props.navigation.navigate('OfficeScreen', {
-            actionId: this.state.action.id
-        });
+        console.log("Office clicked");
     };
 
     render() {
-        const {action} = this.props;
+        const {office} = this.props;
 
         return (
             <TouchableWithoutFeedback
-                onPress={() => this.onPress()}
-            >
+                onPress={() => this.onPress()}>
+                {office != null &&
                 <View style={styles.containerStyle}>
-                    <Text>{action.name}</Text>
+                    <Text>{office.name}</Text>
                 </View>
+                }
+
             </TouchableWithoutFeedback>
         );
     }
@@ -50,7 +44,7 @@ const styles = {
     },
     containerItemStyle: {
         flexDirection: 'row',
-        height: 75,
+        height: 150,
         alignItems: 'center',
     }
     // containerDescriptionStyle: {
@@ -70,4 +64,4 @@ const styles = {
     // }
 };
 
-export default withNavigation(Action);
+export default withNavigation(Office);

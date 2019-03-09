@@ -4,13 +4,15 @@ import {Text, View, Button} from 'react-native';
 import DepartmentListScreen from "./screens/DepartmentListScreen";
 import CourseListScreen from "./screens/CourseListScreen";
 import ActionListScreen from "./screens/ActionListScreen";
+import OfficeScreen from "./screens/OfficeScreen";
 import Drawer from 'react-native-drawer';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const AppNavigator = createStackNavigator({
     DepartmentListScreen: DepartmentListScreen,
     CourseListScreen: CourseListScreen,
-    ActionListScreen: ActionListScreen
+    ActionListScreen: ActionListScreen,
+    OfficeScreen: OfficeScreen
 }, {
     initialRouteName: "DepartmentListScreen",
     defaultNavigationOptions: {
@@ -26,7 +28,7 @@ const AppNavigator = createStackNavigator({
                         color="white"
                     />
                 }
-                onPress={() => openControlPanel}
+                onPress={() => App.openControlPanel}
                 title=""
             />
         )
@@ -37,14 +39,14 @@ const AppContainer = createAppContainer(AppNavigator);
 
 class App extends React.Component {
 
-    closeControlPanel = () => {
+    static closeControlPanel = () => {
         this._drawer.close()
     };
-    openControlPanel = () => {
+    static openControlPanel = () => {
         this._drawer.open()
     };
 
-    render () {
+    render() {
         return (
             <Drawer
                 type="static"
@@ -55,14 +57,14 @@ class App extends React.Component {
                 ref={(ref) => this._drawer = ref}
                 content={<Text>Qui mettere il componente Menu al posto di Text</Text>}
             >
-                <AppContainer />
+                <AppContainer/>
             </Drawer>
         )
     }
 }
 
 const drawerStyles = {
-    drawer: { shadowColor: '#000000', shadowOpacity: 0.8, shadowRadius: 30},
+    drawer: {shadowColor: '#000000', shadowOpacity: 0.8, shadowRadius: 30},
     main: {paddingLeft: 3},
 }
 
