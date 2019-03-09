@@ -18,7 +18,7 @@ class Department extends Component {
 
     onPress = () => {
         // this.setState({selected: !this.state.selected}
-        console.log("Department clicked with :" + this.state.department.id);
+        console.log("Department clicked with: " + this.state.department.id);
 
         this.props.navigation.navigate('CourseListScreen', {
             departmentId: this.state.department.id

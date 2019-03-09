@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {FlatList, Text, View} from 'react-native';
+import {FlatList, Text, View, SectionList} from 'react-native';
 import axios from 'axios';
 import Course from '../components/Course';
 import {Api} from '../constants';
@@ -13,16 +13,13 @@ class CourseListScreen extends Component {
         let departmentId = this.props.navigation.getParam('departmentId', null);
 
         this.state = {
-            data: [],
+            bcCourses: [],
+            msCourses: [],
             departmentId: departmentId
         };
     }
 
     componentDidMount() {
-
-        // const {navigation} = this.props;
-        // this.setState({department: department});
-
 
         let data = new FormData();
         data.append('provid', this.state.departmentId);
@@ -33,7 +30,23 @@ class CourseListScreen extends Component {
             {headers: {'Content-Type': 'multipart/form-data'}}
         ).then((response) => {
             console.log(response.data);
-            this.setState({data: response.data});
+
+            // Split in two arrays according to course level.
+            let bcCourses = [];
+            let msCourses = [];
+
+            // response.data.forEach((course) => {
+            for (const course of response.data) {
+                if (course.type_label === "LAUREA TRIENNALE")
+                    bcCourses.push(course);
+                else if (course.type_label === "LAUREA MAGISTRALE")
+                    msCourses.push(course);
+            }
+
+            this.setState({
+                bcCourses: bcCourses,
+                msCourses: msCourses
+            })
         })
             .catch((err) => {
                 console.log(err);
@@ -55,17 +68,39 @@ class CourseListScreen extends Component {
     render() {
         const departmentId = this.state.departmentId;
         return (
-            <FlatList
-                data={this.state.data}
-                keyExtractor={this.keyExtractor}
+            <SectionList
                 renderItem={(course) => {
                     // this.renderItem(course, departmentId)
                     return (<Course course={course.item} departmentId={departmentId}/>);
                 }}
-            />
-        );
+                renderSectionHeader={({section: {title}}) => (
+                    <Text style={{fontWeight: 'bold'}}>{title}</Text>
+                )}
+                sections={[
+                    {title: 'Lauree Triennali', data: this.state.bcCourses},
+                    {title: 'Lauree Magistrali', data: this.state.msCourses},
+                ]}
+                keyExtractor={this.keyExtractor}
+            />);
     }
+
+
 }
 
 export default CourseListScreen;
 
+
+// Previous that works.
+// render() {
+//     const departmentId = this.state.departmentId;
+//     return (
+//         <FlatList
+//             data={this.state.data}
+//             keyExtractor={this.keyExtractor}
+//             renderItem={(course) => {
+//                 // this.renderItem(course, departmentId)
+//                 return (<Course course={course.item} departmentId={departmentId}/>);
+//             }}
+//         />
+//     );
+// }
