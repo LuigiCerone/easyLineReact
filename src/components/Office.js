@@ -15,11 +15,12 @@ class Office extends Component {
         return (
             <View>
                 {
-                    {office} != null &&
+                    office &&
                     <View style={styles.containerStyle}>
                         <Text>{office.name}</Text>
                     </View>
-                } </View>
+                }
+             </View>
 
         );
     }

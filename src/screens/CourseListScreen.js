@@ -87,8 +87,6 @@ class CourseListScreen extends Component {
             </SafeAreaView>
         );
     }
-
-
 }
 
 export default CourseListScreen;

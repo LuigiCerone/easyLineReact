@@ -30,11 +30,12 @@ class OfficeScreen extends Component {
             data,
             {headers: {'Content-Type': 'multipart/form-data'}}
         ).then((response) => {
+            console.log(response.data);
             this.setState({officeData: response.data[0]});
         })
-            .catch((err) => {
-                console.log(err);
-            });
+        .catch((err) => {
+            console.log(err);
+        });
     }
 
 
