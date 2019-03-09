@@ -9,23 +9,18 @@ class Office extends Component {
         super(props);
     };
 
-    onPress = () => {
-        console.log("Office clicked");
-    };
-
     render() {
         const {office} = this.props;
 
         return (
-            <TouchableWithoutFeedback
-                onPress={() => this.onPress()}>
-                {office != null &&
-                <View style={styles.containerStyle}>
-                    <Text>{office.name}</Text>
-                </View>
-                }
+            <View>
+                {
+                    {office} != null &&
+                    <View style={styles.containerStyle}>
+                        <Text>{office.name}</Text>
+                    </View>
+                } </View>
 
-            </TouchableWithoutFeedback>
         );
     }
 }
