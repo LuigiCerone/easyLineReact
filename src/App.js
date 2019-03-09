@@ -1,12 +1,11 @@
-import React from "react";
-import { createStackNavigator, createAppContainer, createDrawerNavigator } from "react-navigation";
-import { Button } from 'react-native-elements';
-import DepartmentListScreen from "./screens/DepartmentListScreen";
-import CourseListScreen from "./screens/CourseListScreen";
-import ActionListScreen from "./screens/ActionListScreen";
-import OfficeScreen from "./screens/OfficeScreen";
+import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
+import { createStackNavigator, createAppContainer, createDrawerNavigator } from 'react-navigation';
+import { Button } from 'react-native-elements';
+import DepartmentListScreen from './screens/DepartmentListScreen';
+import CourseListScreen from './screens/CourseListScreen';
+import ActionListScreen from './screens/ActionListScreen';
+import OfficeScreen from './screens/OfficeScreen';
 
 const AppNavigator = createStackNavigator({
     DepartmentListScreen: {
@@ -16,21 +15,21 @@ const AppNavigator = createStackNavigator({
             headerStyle: { backgroundColor: '#822627' }
         },
     },
-    CourseListScreen : {
+    CourseListScreen: {
         screen: CourseListScreen,
         navigationOptions: {
             title: 'Dipartimenti',
             headerStyle: { backgroundColor: '#b0e072' }
         }
     },
-    ActionListScreen : {
+    ActionListScreen: {
         screen: ActionListScreen,
         navigationOptions: {
             title: 'Corsi',
             headerStyle: { backgroundColor: '#73e2d4' }
         }
     },
-    OfficeScreen : {
+    OfficeScreen: {
         screen: OfficeScreen,
         navigationOptions: {
             title: 'Segreteria',
@@ -38,7 +37,7 @@ const AppNavigator = createStackNavigator({
         }
     }
 }, {
-    initialRouteName: "DepartmentListScreen",
+    initialRouteName: 'DepartmentListScreen',
     defaultNavigationOptions: ({ navigation }) => ({
         //headerTitleStyle: { textAlign: "center", flex:1  },
         headerTintColor: '#fff',
@@ -53,7 +52,7 @@ const AppNavigator = createStackNavigator({
 });
 
 const drawerScreens = createDrawerNavigator({
-    Homepage:  AppNavigator
+    Homepage: AppNavigator
 }, {
     initialRouteName: 'Homepage',
     drawerPosition: 'right'

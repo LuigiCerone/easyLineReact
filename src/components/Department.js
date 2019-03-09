@@ -1,36 +1,34 @@
-import React, {Component} from 'react';
-import {View, Text, Image, TouchableWithoutFeedback} from 'react-native';
-import {withNavigation} from 'react-navigation';
+import React, { Component } from 'react';
+import { View, Text, TouchableWithoutFeedback } from 'react-native';
+import { withNavigation } from 'react-navigation';
 
-import {Colors} from '../constants';
+import { Colors } from '../constants';
 
 class Department extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {department: this.props.department};
+        this.state = { department: this.props.department };
+    }
 
-
-    };
-
-    componentDidMount() {
-    };
-
-    onPress = () => {
-        // this.setState({selected: !this.state.selected}
-        console.log("Department clicked with: " + this.state.department.id);
-
-        this.props.navigation.navigate('CourseListScreen', {
-            departmentId: this.state.department.id
-        });
-    };
+    //componentDidMount() {
+    //}
 
     render() {
-        const {department} = this.props;
+        const { department } = this.props;
+
+        const onPress = () => {
+            // this.setState({selected: !this.state.selected}
+            console.log(`Department clicked with: ${this.state.department.id}`);
+
+            this.props.navigation.navigate('CourseListScreen', {
+                departmentId: this.state.department.id
+            });
+        };
 
         return (
             <TouchableWithoutFeedback
-                onPress={() => this.onPress()}
+                onPress={() => onPress()}
             >
                 <View style={styles.containerStyle}>
                     <Text>{department.name}</Text>

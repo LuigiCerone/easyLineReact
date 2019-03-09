@@ -1,10 +1,10 @@
-const base_url = "http://test.easyline.univaq.it/api/v1";
+const baseUrl = 'http://test.easyline.univaq.it/api/v1';
 
 const Api = {
-    home_page_endpoint: base_url + "/providers",
-    second_page_endpoint: base_url + "/services",
-    third_page_endpoint: base_url + "/services",
-    forth_page_endpoint: base_url + "/offices"
+    home_page_endpoint: `${baseUrl}/providers`,
+    second_page_endpoint: `${baseUrl}/services`,
+    third_page_endpoint: `${baseUrl}/services`,
+    forth_page_endpoint: `${baseUrl}/offices`
 };
 
-export {Api};
+export { Api };

@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import {View, Text, Image, TouchableWithoutFeedback} from 'react-native';
-import {withNavigation} from 'react-navigation';
+import React, { Component } from 'react';
+import { View, Text, TouchableWithoutFeedback } from 'react-native';
+import { withNavigation } from 'react-navigation';
 
-import {Colors} from '../constants';
+import { Colors } from '../constants';
 
 class Action extends Component {
     constructor(props) {
@@ -11,22 +11,25 @@ class Action extends Component {
         this.state = {
             action: props.action,
         };
-    };
+    }
 
-    onPress = () => {
-        console.log("Action clicked");
-
-        this.props.navigation.navigate('OfficeScreen', {
-            actionId: this.state.action.id
-        });
-    };
+    //componentDidMount() {
+    //}
 
     render() {
-        const {action} = this.props;
+        const { action } = this.props;
+
+        const onPress = () => {
+            console.log('Action clicked');
+
+            this.props.navigation.navigate('OfficeScreen', {
+                actionId: this.state.action.id
+            });
+        };
 
         return (
             <TouchableWithoutFeedback
-                onPress={() => this.onPress()}
+                onPress={() => onPress()}
             >
                 <View style={styles.containerStyle}>
                     <Text>{action.name}</Text>

@@ -1,16 +1,12 @@
-import React, {Component} from 'react';
-import {View, Text, Image, TouchableWithoutFeedback} from 'react-native';
-import {withNavigation} from 'react-navigation';
+import React, { Component } from 'react';
+import { View, Text } from 'react-native';
+import { withNavigation } from 'react-navigation';
 
-import {Colors} from '../constants';
+import { Colors } from '../constants';
 
 class Office extends Component {
-    constructor(props) {
-        super(props);
-    };
-
     render() {
-        const {office} = this.props;
+        const { office } = this.props;
 
         return (
             <View>

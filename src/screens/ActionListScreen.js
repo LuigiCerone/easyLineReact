@@ -1,37 +1,35 @@
-import React, {Component} from 'react';
-import {FlatList, Text, View, StatusBar, SafeAreaView} from 'react-native';
+import React, { Component } from 'react';
+import { FlatList, StatusBar, SafeAreaView } from 'react-native';
 import axios from 'axios';
 import Action from '../components/Action';
-import {Api} from '../constants';
+import { Api } from '../constants';
 
 
 class ActionListScreen extends Component {
-
     constructor(props) {
         super(props);
 
-        let departmentId = this.props.navigation.getParam('departmentId', null);
-        let course = this.props.navigation.getParam('course', null);
+        const departmentId = this.props.navigation.getParam('departmentId', null);
+        const course = this.props.navigation.getParam('course', null);
 
         this.state = {
             data: [],
-            departmentId: departmentId,
-            course: course
+            departmentId,
+            course
         };
     }
 
     componentDidMount() {
-
-        let data = new FormData();
+        const data = new FormData();
         data.append('provid', this.state.departmentId);
         data.append('id', this.state.course.id);
 
         axios.post(Api.third_page_endpoint,
             data,
-            {headers: {'Content-Type': 'multipart/form-data'}}
+            { headers: { 'Content-Type': 'multipart/form-data' } }
         ).then((response) => {
             console.log(response.data);
-            this.setState({data: response.data});
+            this.setState({ data: response.data });
         })
         .catch((err) => {
             console.log(err);
@@ -44,7 +42,7 @@ class ActionListScreen extends Component {
 
     renderItem(action) {
         return (
-            <Action action={action.item}/>
+            <Action action={action.item} />
         );
     }
 

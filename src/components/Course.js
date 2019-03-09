@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import {View, Text, Image, TouchableWithoutFeedback} from 'react-native';
-import {withNavigation} from 'react-navigation';
+import React, { Component } from 'react';
+import { View, Text, TouchableWithoutFeedback } from 'react-native';
+import { withNavigation } from 'react-navigation';
 
-import {Colors} from '../constants';
+import { Colors } from '../constants';
 
 class Course extends Component {
     constructor(props) {
@@ -12,26 +12,26 @@ class Course extends Component {
             course: props.course,
             departmentId: props.departmentId
         };
-    };
+    }
 
-    componentDidMount() {
-    };
-
-    onPress = () => {
-        console.log("Item clicked");
-
-        this.props.navigation.navigate('ActionListScreen', {
-            departmentId: this.state.departmentId,
-            course: this.state.course
-        });
-    };
+    //componentDidMount() {
+    //}
 
     render() {
-        const {course} = this.props;
+        const { course } = this.props;
+
+        const onPress = () => {
+            console.log('Item clicked');
+
+            this.props.navigation.navigate('ActionListScreen', {
+                departmentId: this.state.departmentId,
+                course: this.state.course
+            });
+        };
 
         return (
             <TouchableWithoutFeedback
-                onPress={() => this.onPress()}
+                onPress={() => onPress()}
             >
                 <View style={styles.containerStyle}>
                     <Text>{course.name}</Text>
