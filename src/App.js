@@ -5,82 +5,51 @@ import DepartmentListScreen from "./screens/DepartmentListScreen";
 import CourseListScreen from "./screens/CourseListScreen";
 import ActionListScreen from "./screens/ActionListScreen";
 import OfficeScreen from "./screens/OfficeScreen";
-import { Header } from "react-native-elements";
-import MenuButton from "./components/MenuButton";
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 
 const AppNavigator = createStackNavigator({
     DepartmentListScreen: {
         screen: DepartmentListScreen,
-        navigationOptions: ({ navigation }) => ({
-            header: (
-                <Header
-                    rightComponent={<MenuButton navigation={navigation} />}
-                    statusBarProps={{ backgroundColor: '#6b1819' }}
-                    centerComponent={{ text: 'EasyLine', style: { color: '#fff', fontSize: 20 } }}
-                    containerStyle={{ backgroundColor: '#822627' }}
-                />)})
+        navigationOptions: {
+            title: 'EasyLine',
+            headerStyle: { backgroundColor: '#822627' }
+        },
     },
     CourseListScreen : {
         screen: CourseListScreen,
-        navigationOptions: ({ navigation }) => ({
-            header: (
-                <Header
-                    leftComponent={(
-                        <Button
-                            onPress={() => navigation.goBack(null)}
-                            buttonStyle={{ backgroundColor: 'transparent' }}
-                            icon={ <Icon name="arrow-left" size={20} color="#fff" /> }
-                        />
-                    )}
-                    rightComponent={<MenuButton navigation={navigation} />}
-                    statusBarProps={{ backgroundColor: '#8fbc54' }}
-                    centerComponent={{ text: 'Dipartimenti', style: { color: '#fff', fontSize: 20 } }}
-                    containerStyle={{ backgroundColor: '#b0e072' }}
-                />)})
+        navigationOptions: {
+            title: 'Dipartimenti',
+            headerStyle: { backgroundColor: '#b0e072' }
+        }
     },
     ActionListScreen : {
         screen: ActionListScreen,
-        navigationOptions: ({ navigation }) => ({
-            header: (
-                <Header
-                    leftComponent={(
-                        <Button
-                            onPress={() => navigation.goBack(null)}
-                            buttonStyle={{ backgroundColor: 'transparent' }}
-                            icon={ <Icon name="arrow-left" size={20} color="#fff" /> }
-                        />
-                    )}
-                    rightComponent={<MenuButton navigation={navigation} />}
-                    statusBarProps={{ backgroundColor: '#54c4b6' }}
-                    centerComponent={{ text: 'Corsi', style: { color: '#fff', fontSize: 20 } }}
-                    containerStyle={{ backgroundColor: '#73e2d4' }}
-                />)})
+        navigationOptions: {
+            title: 'Corsi',
+            headerStyle: { backgroundColor: '#73e2d4' }
+        }
     },
     OfficeScreen : {
         screen: OfficeScreen,
-        navigationOptions: ({ navigation }) => ({
-            header: (
-                <Header
-                    leftComponent={(
-                        <Button
-                            onPress={() => navigation.goBack(null)}
-                            buttonStyle={{ backgroundColor: 'transparent' }}
-                            icon={ <Icon name="arrow-left" size={20} color="#fff" /> }
-                        />
-                    )}
-                    rightComponent={<MenuButton navigation={navigation} />}
-                    statusBarProps={{ backgroundColor: '#ccbb53' }}
-                    centerComponent={{ text: 'Segreteria', style: { color: '#fff', fontSize: 20 } }}
-                    containerStyle={{ backgroundColor: '#e2d373' }}
-                />)})
+        navigationOptions: {
+            title: 'Segreteria',
+            headerStyle: { backgroundColor: '#e2d373' }
+        }
     }
 }, {
     initialRouteName: "DepartmentListScreen",
-    navigationOptions: ({ navigation }) => ({
-        headerLeft : <MenuButton navigate={navigation.navigate} />,
-    }),
+    defaultNavigationOptions: ({ navigation }) => ({
+        //headerTitleStyle: { textAlign: "center", flex:1  },
+        headerTintColor: '#fff',
+        headerRight: (
+            <Button
+                onPress={() => navigation.toggleDrawer()}
+                buttonStyle={{ backgroundColor: 'transparent' }}
+                icon={<Icon name="bars" size={20} color="#fff" />}
+            />
+        )
+    })
 });
 
 const drawerScreens = createDrawerNavigator({

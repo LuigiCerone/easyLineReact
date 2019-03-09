@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {FlatList, Text, View, SectionList} from 'react-native';
+import {FlatList, Text, View, SectionList, SafeAreaView, StatusBar} from 'react-native';
 import axios from 'axios';
 import Course from '../components/Course';
 import {Api} from '../constants';
@@ -68,20 +68,24 @@ class CourseListScreen extends Component {
     render() {
         const departmentId = this.state.departmentId;
         return (
-            <SectionList
-                renderItem={(course) => {
-                    // this.renderItem(course, departmentId)
-                    return (<Course course={course.item} departmentId={departmentId}/>);
-                }}
-                renderSectionHeader={({section: {title}}) => (
-                    <Text style={{fontWeight: 'bold'}}>{title}</Text>
-                )}
-                sections={[
-                    {title: 'Lauree Triennali', data: this.state.bcCourses},
-                    {title: 'Lauree Magistrali', data: this.state.msCourses},
-                ]}
-                keyExtractor={this.keyExtractor}
-            />);
+            <SafeAreaView>
+                <StatusBar backgroundColor="#8fbc54" />
+                <SectionList
+                    renderItem={(course) => {
+                        // this.renderItem(course, departmentId)
+                        return (<Course course={course.item} departmentId={departmentId}/>);
+                    }}
+                    renderSectionHeader={({section: {title}}) => (
+                        <Text style={{fontWeight: 'bold'}}>{title}</Text>
+                    )}
+                    sections={[
+                        {title: 'Lauree Triennali', data: this.state.bcCourses},
+                        {title: 'Lauree Magistrali', data: this.state.msCourses},
+                    ]}
+                    keyExtractor={this.keyExtractor}
+                />
+            </SafeAreaView>
+        );
     }
 
 

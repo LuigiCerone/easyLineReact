@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {FlatList, Text, View} from 'react-native';
+import {FlatList, Text, View, StatusBar, SafeAreaView} from 'react-native';
 import axios from 'axios';
 import Office from '../components/Office';
 import {Api} from '../constants';
@@ -40,9 +40,12 @@ class OfficeScreen extends Component {
 
     render() {
         return (
-            <Office
-                office={this.state.officeData}
-            />
+            <SafeAreaView>
+                <StatusBar backgroundColor="#ccbb53" />
+                <Office
+                    office={this.state.officeData}
+                />
+            </SafeAreaView>
         );
     }
 }

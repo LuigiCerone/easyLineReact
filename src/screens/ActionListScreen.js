@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {FlatList, Text, View} from 'react-native';
+import {FlatList, Text, View, StatusBar, SafeAreaView} from 'react-native';
 import axios from 'axios';
 import Action from '../components/Action';
 import {Api} from '../constants';
@@ -50,11 +50,14 @@ class ActionListScreen extends Component {
 
     render() {
         return (
-            <FlatList
-                data={this.state.data}
-                keyExtractor={this.keyExtractor}
-                renderItem={this.renderItem}
-            />
+            <SafeAreaView>
+                <StatusBar backgroundColor="#54c4b6" />
+                <FlatList
+                    data={this.state.data}
+                    keyExtractor={this.keyExtractor}
+                    renderItem={this.renderItem}
+                />
+            </SafeAreaView>
         );
     }
 }
