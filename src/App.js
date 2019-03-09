@@ -1,71 +1,95 @@
 import React from "react";
-import {createStackNavigator, createAppContainer} from "react-navigation";
-import {Text, View, Button} from 'react-native';
+import { createStackNavigator, createAppContainer, createDrawerNavigator } from "react-navigation";
+import { Button } from 'react-native-elements';
 import DepartmentListScreen from "./screens/DepartmentListScreen";
 import CourseListScreen from "./screens/CourseListScreen";
 import ActionListScreen from "./screens/ActionListScreen";
 import OfficeScreen from "./screens/OfficeScreen";
-import Drawer from 'react-native-drawer';
+import { Header } from "react-native-elements";
+import MenuButton from "./components/MenuButton";
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+
 const AppNavigator = createStackNavigator({
-    DepartmentListScreen: DepartmentListScreen,
-    CourseListScreen: CourseListScreen,
-    ActionListScreen: ActionListScreen,
-    OfficeScreen: OfficeScreen
+    DepartmentListScreen: {
+        screen: DepartmentListScreen,
+        navigationOptions: ({ navigation }) => ({
+            header: (
+                <Header
+                    rightComponent={<MenuButton navigation={navigation} />}
+                    statusBarProps={{ backgroundColor: '#6b1819' }}
+                    centerComponent={{ text: 'EasyLine', style: { color: '#fff', fontSize: 20 } }}
+                    containerStyle={{ backgroundColor: '#822627' }}
+                />)})
+    },
+    CourseListScreen : {
+        screen: CourseListScreen,
+        navigationOptions: ({ navigation }) => ({
+            header: (
+                <Header
+                    leftComponent={(
+                        <Button
+                            onPress={() => navigation.goBack(null)}
+                            buttonStyle={{ backgroundColor: 'transparent' }}
+                            icon={ <Icon name="arrow-left" size={20} color="#fff" /> }
+                        />
+                    )}
+                    rightComponent={<MenuButton navigation={navigation} />}
+                    statusBarProps={{ backgroundColor: '#8fbc54' }}
+                    centerComponent={{ text: 'Dipartimenti', style: { color: '#fff', fontSize: 20 } }}
+                    containerStyle={{ backgroundColor: '#b0e072' }}
+                />)})
+    },
+    ActionListScreen : {
+        screen: ActionListScreen,
+        navigationOptions: ({ navigation }) => ({
+            header: (
+                <Header
+                    leftComponent={(
+                        <Button
+                            onPress={() => navigation.goBack(null)}
+                            buttonStyle={{ backgroundColor: 'transparent' }}
+                            icon={ <Icon name="arrow-left" size={20} color="#fff" /> }
+                        />
+                    )}
+                    rightComponent={<MenuButton navigation={navigation} />}
+                    statusBarProps={{ backgroundColor: '#54c4b6' }}
+                    centerComponent={{ text: 'Corsi', style: { color: '#fff', fontSize: 20 } }}
+                    containerStyle={{ backgroundColor: '#73e2d4' }}
+                />)})
+    },
+    OfficeScreen : {
+        screen: OfficeScreen,
+        navigationOptions: ({ navigation }) => ({
+            header: (
+                <Header
+                    leftComponent={(
+                        <Button
+                            onPress={() => navigation.goBack(null)}
+                            buttonStyle={{ backgroundColor: 'transparent' }}
+                            icon={ <Icon name="arrow-left" size={20} color="#fff" /> }
+                        />
+                    )}
+                    rightComponent={<MenuButton navigation={navigation} />}
+                    statusBarProps={{ backgroundColor: '#ccbb53' }}
+                    centerComponent={{ text: 'Segreteria', style: { color: '#fff', fontSize: 20 } }}
+                    containerStyle={{ backgroundColor: '#e2d373' }}
+                />)})
+    }
 }, {
     initialRouteName: "DepartmentListScreen",
-    defaultNavigationOptions: {
-        headerStyle: {
-            backgroundColor: 'orange'
-        },
-        headerLeft: (
-            <Button
-                icon={
-                    <Icon
-                        name="arrow-right"
-                        size={15}
-                        color="white"
-                    />
-                }
-                onPress={() => App.openControlPanel}
-                title=""
-            />
-        )
-    }
+    navigationOptions: ({ navigation }) => ({
+        headerLeft : <MenuButton navigate={navigation.navigate} />,
+    }),
 });
 
-const AppContainer = createAppContainer(AppNavigator);
+const drawerScreens = createDrawerNavigator({
+    Homepage:  AppNavigator
+}, {
+    initialRouteName: 'Homepage',
+    drawerPosition: 'right'
+});
 
-class App extends React.Component {
-
-    static closeControlPanel = () => {
-        this._drawer.close()
-    };
-    static openControlPanel = () => {
-        this._drawer.open()
-    };
-
-    render() {
-        return (
-            <Drawer
-                type="static"
-                tapToClose={true}
-                openDrawerOffset={100}
-                styles={drawerStyles}
-                tweenHandler={Drawer.tweenPresets.parallax}
-                ref={(ref) => this._drawer = ref}
-                content={<Text>Qui mettere il componente Menu al posto di Text</Text>}
-            >
-                <AppContainer/>
-            </Drawer>
-        )
-    }
-}
-
-const drawerStyles = {
-    drawer: {shadowColor: '#000000', shadowOpacity: 0.8, shadowRadius: 30},
-    main: {paddingLeft: 3},
-}
+const App = createAppContainer(drawerScreens);
 
 export default App;
