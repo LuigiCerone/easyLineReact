@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {FlatList, Text, View} from 'react-native';
 import axios from 'axios';
-import Item from '../components/Department';
+import Action from '../components/Action';
 import {Api} from '../constants';
 
 
@@ -9,22 +9,22 @@ class ActionListScreen extends Component {
 
     constructor(props) {
         super(props);
+
+        let departmentId = this.props.navigation.getParam('departmentId', null);
+        let course = this.props.navigation.getParam('course', null);
+
         this.state = {
             data: [],
-            item: null
+            departmentId: departmentId,
+            course: course
         };
     }
 
     componentDidMount() {
 
-        // const {navigation} = this.props;
-        let department = this.props.navigation.getParam('department', null);
-        this.setState({department: department});
-
-
         let data = new FormData();
-        data.append('provid', item.id);
-        data.append('id', '');
+        data.append('provid', this.state.departmentId);
+        data.append('id', this.state.course.id);
 
         axios.post(Api.third_page_endpoint,
             data,
@@ -38,18 +38,17 @@ class ActionListScreen extends Component {
             });
     }
 
-    keyExtractor(item) {
-        return `${item.id}`;
+    keyExtractor(action) {
+        return `${action.id}`;
     }
 
-    renderItem({item}) {
+    renderItem(action) {
         return (
-            <Item item={item}/>
+            <Action action={action.item}/>
         );
     }
 
     render() {
-        let item = this.state.item;
         return (
             <FlatList
                 data={this.state.data}

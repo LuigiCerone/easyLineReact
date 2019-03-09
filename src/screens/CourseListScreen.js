@@ -43,13 +43,14 @@ class CourseListScreen extends Component {
     keyExtractor(department) {
         return `${department.id}`;
     }
-        debugger;
 
-    renderItem(course, id) {
-        return (
-            <Course course={course.item} departmentId={id}/>
-        );
-    }
+    debugger;
+
+    // renderItem(course, id) {
+    //     return (
+    //
+    //     );
+    // }
 
     render() {
         const departmentId = this.state.departmentId;
@@ -58,7 +59,8 @@ class CourseListScreen extends Component {
                 data={this.state.data}
                 keyExtractor={this.keyExtractor}
                 renderItem={(course) => {
-                    this.renderItem(course, departmentId)
+                    // this.renderItem(course, departmentId)
+                    return (<Course course={course.item} departmentId={departmentId}/>);
                 }}
             />
         );

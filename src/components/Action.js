@@ -4,7 +4,7 @@ import {withNavigation} from 'react-navigation';
 
 import {Colors} from '../constants';
 
-class Course extends Component {
+class Action extends Component {
     constructor(props) {
         super(props);
 
@@ -14,27 +14,24 @@ class Course extends Component {
         };
     };
 
-    componentDidMount() {
-    };
-
     onPress = () => {
-        console.log("Item clicked");
+        console.log("Action clicked");
 
-        this.props.navigation.navigate('ActionListScreen', {
-            departmentId: this.state.departmentId,
-            course: this.state.course
-        });
+        //     this.props.navigation.navigate('OptionListScreen', {
+        //         departmentId: this.state.departmentId,
+        //         course: this.state.course
+        //     });
     };
 
     render() {
-        const {course} = this.props;
+        const {action} = this.props;
 
         return (
             <TouchableWithoutFeedback
                 onPress={() => this.onPress()}
             >
                 <View style={styles.containerStyle}>
-                    <Text>{course.name}</Text>
+                    <Text>{action.name}</Text>
                 </View>
             </TouchableWithoutFeedback>
         );
@@ -75,4 +72,4 @@ const styles = {
     // }
 };
 
-export default withNavigation(Course);
+export default withNavigation(Action);
