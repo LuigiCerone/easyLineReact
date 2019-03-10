@@ -8,11 +8,13 @@ class DrawerMenu extends Component {
     render() {
         return (
             <ScrollView
-                style={[styles.drawerMenu, { backgroundColor: this.props.backgroundColor }]}
+                //style={[styles.drawerMenu, { backgroundColor: this.props.backgroundColor }]}
+                style={styles.drawerMenu}
                 forceInset={{ top: 'always', horizontal: 'never' }}
             >
                 <SafeAreaView>
-                    <Text style={[styles.header, { borderColor: this.props.borderColor }]}>EasyLine</Text>
+                    {/*<Text style={[styles.header, { borderColor: this.props.borderColor }]}>EasyLine</Text>*/}
+                    <Text style={styles.header}>EasyLine</Text>
                     <View style={styles.logoContainer}>
                         <Image
                             //source={Images.univaqLogo}
@@ -42,7 +44,8 @@ class DrawerMenu extends Component {
                         <Button
                             buttonStyle={styles.loginButton}
                             title='Accedi'
-                            color={this.props.buttonColor}
+                            //color={this.props.buttonColor}
+                            color='#6b1819'
                         />
                     </View>
                     <Text style={styles.recoverPassword}>Recupera Password</Text>
@@ -54,7 +57,7 @@ class DrawerMenu extends Component {
 
 const styles = {
     drawerMenu: {
-        //backgroundColor: '#822627',
+        backgroundColor: '#822627',
         flex: 1
     },
     header: {
@@ -64,7 +67,7 @@ const styles = {
         color: '#fff',
         textAlign: 'center',
         borderBottomWidth: 1,
-        //borderBottomColor: '#6b1819'
+        borderBottomColor: '#6b1819'
     },
     logoContainer: {
         marginTop: 20,
