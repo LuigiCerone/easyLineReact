@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableWithoutFeedback } from 'react-native';
+import { TouchableWithoutFeedback } from 'react-native';
 import { withNavigation } from 'react-navigation';
+import { ListItem } from 'react-native-elements';
 
 import { Colors } from '../constants';
+
 
 class Action extends Component {
     constructor(props) {
@@ -13,27 +15,25 @@ class Action extends Component {
         };
     }
 
-    //componentDidMount() {
-    //}
+    onPress = () => {
+        this.props.navigation.navigate('OfficeScreen', {
+            actionId: this.state.action.id
+        });
+    };
 
     render() {
         const { action } = this.props;
 
-        const onPress = () => {
-            console.log('Action clicked');
-
-            this.props.navigation.navigate('OfficeScreen', {
-                actionId: this.state.action.id
-            });
-        };
-
         return (
             <TouchableWithoutFeedback
-                onPress={() => onPress()}
+                onPress={() => this.onPress()}
             >
-                <View style={styles.containerStyle}>
-                    <Text>{action.name}</Text>
-                </View>
+                <ListItem 
+                style={styles.containerStyle}
+                    title={action.name}
+                    leftIcon={{ name: 'call-to-action' }}
+                    rightIcon={{ name: 'keyboard-arrow-right' }}
+                />
             </TouchableWithoutFeedback>
         );
     }
@@ -43,13 +43,9 @@ const styles = {
     containerStyle: {
         borderColor: Colors.border,
         borderWidth: 1,
-        padding: 20,
-        notSelected: {
-            backgroundColor: Colors.white
-        },
-        selected: {
-            backgroundColor: Colors.bg_floor
-        }
+        padding: 5,
+        margin: 5,
+        borderRadius: 20
     },
     containerItemStyle: {
         flexDirection: 'row',

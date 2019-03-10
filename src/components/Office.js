@@ -21,7 +21,7 @@ class Office extends Component {
         let tableHead = ['Orari'];
         let tableDataStart = [];
         let tableDataEnd = [];
-        let tableData = [[], []];
+        const tableData = [[], []];
         for (let i = 0; i < office.timetable.length; i++) {
             tableHead = tableHead.concat(week[office.timetable[i].weekday]);
             tableDataStart = tableDataStart.concat(office.timetable[i].start.substring(0, 5));
@@ -31,7 +31,7 @@ class Office extends Component {
         tableData[1] = tableData[1].concat(tableDataEnd);
         return (
             <View>
-                <Text style={styles.textTitle}> {office.name} </Text>
+                <Text style={styles.textTitle}>{office.name} </Text>
                 <Text style={styles.textTitle}>Email: {office.email} </Text>
                 <Table style={styles.tab}>
                     <Row data={tableHead} style={styles.tabHead} textStyle={styles.tabText} flexArr={[1, 1, 1, 1, 1, 1]} />

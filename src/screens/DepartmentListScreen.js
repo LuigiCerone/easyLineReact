@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { FlatList, StatusBar, SafeAreaView } from 'react-native';
 import axios from 'axios';
+import Spinner from 'react-native-loading-spinner-overlay';
+
 import Department from '../components/Department';
 import { Api, Colors } from '../constants';
-import Spinner from 'react-native-loading-spinner-overlay';
+
 
 class DepartmentListScreen extends Component {
     constructor(props) {
@@ -23,7 +25,7 @@ class DepartmentListScreen extends Component {
             { headers: { 'Content-Type': 'multipart/form-data' } }
         ).then((response) => {
             console.log(response.data);
-            this.setState({ data: response.data , isLoading: false});
+            this.setState({ data: response.data, isLoading: false });
         })
             .catch((err) => {
                 console.log(err);

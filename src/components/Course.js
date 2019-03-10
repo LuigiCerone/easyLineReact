@@ -1,8 +1,12 @@
+/* eslint-disable react/jsx-first-prop-new-line */
 import React, { Component } from 'react';
-import { View, Text, TouchableWithoutFeedback } from 'react-native';
+import { TouchableWithoutFeedback } from 'react-native';
 import { withNavigation } from 'react-navigation';
+import { ListItem } from 'react-native-elements';
+
 
 import { Colors } from '../constants';
+
 
 class Course extends Component {
     constructor(props) {
@@ -14,28 +18,28 @@ class Course extends Component {
         };
     }
 
-    //componentDidMount() {
-    //}
+    onPress = () => {
+        this.props.navigation.navigate('ActionListScreen', {
+            departmentId: this.state.departmentId,
+            course: this.state.course
+        });
+    };
+
 
     render() {
         const { course } = this.props;
 
-        const onPress = () => {
-            console.log('Item clicked');
-
-            this.props.navigation.navigate('ActionListScreen', {
-                departmentId: this.state.departmentId,
-                course: this.state.course
-            });
-        };
-
+       
         return (
             <TouchableWithoutFeedback
-                onPress={() => onPress()}
+                onPress={() => this.onPress()}
             >
-                <View style={styles.containerStyle}>
-                    <Text>{course.name}</Text>
-                </View>
+                <ListItem 
+                style={styles.containerStyle}
+                    title={course.name}
+                    leftIcon={{ name: 'book' }}
+                    rightIcon={{ name: 'keyboard-arrow-right' }}
+                />
             </TouchableWithoutFeedback>
         );
     }
@@ -45,13 +49,9 @@ const styles = {
     containerStyle: {
         borderColor: Colors.border,
         borderWidth: 1,
-        padding: 20,
-        notSelected: {
-            backgroundColor: Colors.white
-        },
-        selected: {
-            backgroundColor: Colors.bg_floor
-        }
+        padding: 5,
+        margin: 5,
+        borderRadius: 20
     },
     containerItemStyle: {
         flexDirection: 'row',
