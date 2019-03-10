@@ -61,8 +61,13 @@ const drawerScreens = createDrawerNavigator({
     // 85% of screen width
     drawerWidth: () => Dimensions.get('window').width * 0.85,
     // TODO: Color the drawer according to the view
-    //contentComponent: () => <DrawerMenu color={color} />
-    contentComponent: DrawerMenu
+    contentComponent: () => (
+        <DrawerMenu
+            backgroundColor='#822627'
+            buttonColor='#6b1819'
+            borderColor='#6b1819'
+        />)
+    //contentComponent: DrawerMenu
 });
 
 const App = createAppContainer(drawerScreens);

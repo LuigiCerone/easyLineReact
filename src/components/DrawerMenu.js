@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, Button } from 'react-native';
+import { View, Text, Image, Button, SafeAreaView, ScrollView } from 'react-native';
 import { Input } from 'react-native-elements';
 
 import Images from '../assets/images';
@@ -7,50 +7,55 @@ import Images from '../assets/images';
 class DrawerMenu extends Component {
     render() {
         return (
-            <View style={styles.drawerMenu}>
-                <Text style={styles.header}>EasyLine</Text>
-                <View style={styles.logoContainer}>
-                    <Image
-                        //source={Images.univaqLogo}
-                        source={Images.easyLineLogo}
-                        style={styles.logoImage}
-                    />
-                    <Text style={styles.accessHeader}>Accesso EasyLine</Text>
-                    <Text style={styles.accessText}>
-                        Accedi con le credenziali della segreteria virtuale Univaq
-                    </Text>
-                </View>
-                <View>
-                    <Input
-                        //inputStyle={styles.labelStyle}
-                        placeholderTextColor='#fff'
-                        placeholder='Username'
-                        textAlign='center'
-                        //leftIcon={{ type: 'font-awesome', name: 'user', color: '#fff' }}
-                    />
-                    <Input
-                        //inputStyle={styles.labelStyle}
-                        placeholderTextColor='#fff'
-                        placeholder='Password'
-                        textAlign='center'
-                        //leftIcon={{ type: 'font-awesome', name: 'key', color: '#fff' }}
-                    />
-                    <Button
-                        buttonStyle={styles.loginButton}
-                        title='Accedi'
-                        color='#6b1819'
-                    />
-                </View>
-                <Text style={styles.recoverPassword}>Recupera Password</Text>
-            </View>
+            <ScrollView
+                style={[styles.drawerMenu, { backgroundColor: this.props.backgroundColor }]}
+                forceInset={{ top: 'always', horizontal: 'never' }}
+            >
+                <SafeAreaView>
+                    <Text style={[styles.header, { borderColor: this.props.borderColor }]}>EasyLine</Text>
+                    <View style={styles.logoContainer}>
+                        <Image
+                            //source={Images.univaqLogo}
+                            source={Images.easyLineLogo}
+                            style={styles.logoImage}
+                        />
+                        <Text style={styles.accessHeader}>Accesso EasyLine</Text>
+                        <Text style={styles.accessText}>
+                            Accedi con le credenziali della segreteria virtuale Univaq
+                        </Text>
+                    </View>
+                    <View>
+                        <Input
+                            //inputStyle={styles.labelStyle}
+                            placeholderTextColor='#fff'
+                            placeholder='Username'
+                            textAlign='center'
+                            //leftIcon={{ type: 'font-awesome', name: 'user', color: '#fff' }}
+                        />
+                        <Input
+                            //inputStyle={styles.labelStyle}
+                            placeholderTextColor='#fff'
+                            placeholder='Password'
+                            textAlign='center'
+                            //leftIcon={{ type: 'font-awesome', name: 'key', color: '#fff' }}
+                        />
+                        <Button
+                            buttonStyle={styles.loginButton}
+                            title='Accedi'
+                            color={this.props.buttonColor}
+                        />
+                    </View>
+                    <Text style={styles.recoverPassword}>Recupera Password</Text>
+                </SafeAreaView>
+            </ScrollView>
         );
     }
 }
 
 const styles = {
     drawerMenu: {
-        backgroundColor: '#822627',
-        height: '100%'
+        //backgroundColor: '#822627',
+        flex: 1
     },
     header: {
         width: '100%',
@@ -59,7 +64,7 @@ const styles = {
         color: '#fff',
         textAlign: 'center',
         borderBottomWidth: 1,
-        borderBottomColor: '#6b1819'
+        //borderBottomColor: '#6b1819'
     },
     logoContainer: {
         marginTop: 20,
@@ -87,7 +92,7 @@ const styles = {
     //    color: '#fff'
     //},
     loginButton: {
-        color: '#6b1819'
+        //color: '#6b1819'
     },
     recoverPassword: {
         fontSize: 15,
