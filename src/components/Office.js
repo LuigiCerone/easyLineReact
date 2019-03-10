@@ -13,17 +13,17 @@ class Office extends Component {
         for (let i = 0; i < office.timetable.length; i++)
             {
             tableHead = tableHead.concat(office.timetable[i].weekday);
-            //tableDataStart = tableDataStart.concat(office.timetable[i].start);
+            tableDataStart = tableDataStart.concat(office.timetable[i].start);
             }
         let tableTitle = ['Apertura'];
         return (
             <View>
                 <Text>{office.name}</Text>
                 <Table>
-                    <Row data={tableHead} flexArr={[1, 1, 2, 1, 1, 1]} />
+                    <Row data={tableHead} />
                     <TableWrapper style={styles.wrapper}>
                         <Col data={tableTitle} style={styles.title} heightArr={[28, 28]} textStyle={styles.text} />
-                        <Rows data={tableDataStart} style={styles.row} textStyle={styles.text} />
+                        <Row data={tableDataStart} style={styles.row} textStyle={styles.text} />
                     </TableWrapper>
                 </Table>
             </View>
@@ -39,10 +39,10 @@ class Office extends Component {
 // }
 const styles = {
     container: { flex: 1, padding: 16, paddingTop: 30, backgroundColor: '#fff' },
-    head: {  height: 40,  backgroundColor: '#f1f8ff'  },
+    head: { height: 40, backgroundColor: '#f1f8ff' },
     wrapper: { flexDirection: 'row' },
-    title: { flex: 1, backgroundColor: '#f6f8fa' },
-    row: {  height: 28  },
+    title: { backgroundColor: '#f6f8fa' },
+    row: { height: 28, flex: 4 },
     text: { textAlign: 'center' },
 
     containerStyle: {
