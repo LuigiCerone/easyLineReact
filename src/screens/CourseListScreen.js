@@ -56,13 +56,6 @@ class CourseListScreen extends Component {
         return `${department.id}`;
     }
 
-
-    // renderItem(course, id) {
-    //     return (
-    //
-    //     );
-    // }
-
     render() {
         const departmentId = this.state.departmentId;
         return (
@@ -70,7 +63,6 @@ class CourseListScreen extends Component {
                 <StatusBar backgroundColor="#8fbc54" />
                 <SectionList
                     renderItem={(course) => {
-                        // this.renderItem(course, departmentId)
                         return (<Course course={course.item} departmentId={departmentId} />);
                     }}
                     renderSectionHeader={({ section: { title } }) => (
@@ -88,19 +80,3 @@ class CourseListScreen extends Component {
 }
 
 export default CourseListScreen;
-
-
-// Previous that works.
-// render() {
-//     const departmentId = this.state.departmentId;
-//     return (
-//         <FlatList
-//             data={this.state.data}
-//             keyExtractor={this.keyExtractor}
-//             renderItem={(course) => {
-//                 // this.renderItem(course, departmentId)
-//                 return (<Course course={course.item} departmentId={departmentId}/>);
-//             }}
-//         />
-//     );
-// }

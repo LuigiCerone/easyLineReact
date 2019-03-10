@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StatusBar, SafeAreaView } from 'react-native';
 import axios from 'axios';
-import Office from '../components/Office';
+import Office, { Text, View } from '../components/Office';
 import { Api } from '../constants';
 
 
@@ -12,7 +12,6 @@ class OfficeScreen extends Component {
         const actionId = this.props.navigation.getParam('actionId', null);
 
         this.state = {
-            officeData: null,
             actionId
         };
 
@@ -30,9 +29,9 @@ class OfficeScreen extends Component {
             console.log(response.data);
             this.setState({ officeData: response.data[0] });
         })
-        .catch((err) => {
-            console.log(err);
-        });
+            .catch((err) => {
+                console.log(err);
+            });
     }
 
 
@@ -40,9 +39,12 @@ class OfficeScreen extends Component {
         return (
             <SafeAreaView>
                 <StatusBar backgroundColor="#ccbb53" />
+                {this.state.officeData &&
                 <Office
-                    office={this.state.officeData}
+                office={this.state.officeData}
                 />
+                }
+
             </SafeAreaView>
         );
     }

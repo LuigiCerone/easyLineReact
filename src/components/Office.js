@@ -10,18 +10,19 @@ class Office extends Component {
 
         return (
             <View>
-                {
-                    office &&
-                    <View style={styles.containerStyle}>
-                        <Text>{office.name}</Text>
-                    </View>
-                }
+                <Text>{office.name}</Text>
+                <Text>{office.address}</Text>
              </View>
-
         );
     }
 }
 
+// {
+//     office &&
+//     <View style={styles.containerStyle}>
+//         <Text>{office.name}</Text>
+//     </View>
+// }
 const styles = {
     containerStyle: {
         borderColor: Colors.border,
