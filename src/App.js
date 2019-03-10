@@ -28,7 +28,7 @@ const AppNavigator = createStackNavigator({
     ActionListScreen: {
         screen: ActionListScreen,
         navigationOptions: {
-            title: 'Corsi',
+            title: 'Opzioni',
             //headerStyle: { backgroundColor: '#822627' }
             // headerStyle: { backgroundColor: '#73e2d4' }
         }
