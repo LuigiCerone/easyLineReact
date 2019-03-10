@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Text, SectionList, SafeAreaView, StatusBar } from 'react-native';
 import axios from 'axios';
 import Course from '../components/Course';
-import { Api } from '../constants';
-
+import { Api, Colors } from '../constants';
+import Spinner from 'react-native-loading-spinner-overlay';
 
 class CourseListScreen extends Component {
     constructor(props) {
@@ -12,6 +12,7 @@ class CourseListScreen extends Component {
         const departmentId = this.props.navigation.getParam('departmentId', null);
 
         this.state = {
+            isLoading: true,
             bcCourses: [],
             msCourses: [],
             departmentId
@@ -33,7 +34,6 @@ class CourseListScreen extends Component {
             const bcCourses = [];
             const msCourses = [];
 
-            // response.data.forEach((course) => {
             for (const course of response.data) {
                 if (course.type_label === 'LAUREA TRIENNALE') {
                     bcCourses.push(course);
@@ -42,7 +42,9 @@ class CourseListScreen extends Component {
                 }
             }
 
+            // Update and disable spinner.
             this.setState({
+                isLoading: false,
                 bcCourses,
                 msCourses
             });
@@ -60,7 +62,11 @@ class CourseListScreen extends Component {
         const departmentId = this.state.departmentId;
         return (
             <SafeAreaView>
-                <StatusBar backgroundColor="#8fbc54" />
+                <StatusBar backgroundColor={Colors.statusBarColor} />
+                <Spinner
+                    visible={this.state.isLoading}
+                    textContent={'Loading...'}
+                />
                 <SectionList
                     renderItem={(course) => {
                         return (<Course course={course.item} departmentId={departmentId} />);
@@ -78,5 +84,6 @@ class CourseListScreen extends Component {
         );
     }
 }
+// <StatusBar backgroundColor="#8fbc54" />
 
 export default CourseListScreen;

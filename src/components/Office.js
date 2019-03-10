@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, View, Text } from 'react-native';
+import { View, Text } from 'react-native';
 import { Table, TableWrapper, Row, Rows, Col } from 'react-native-table-component';
 import { withNavigation } from 'react-navigation';
 
@@ -45,19 +45,13 @@ class Office extends Component {
     }
 }
 
-// {
-//     office &&
-//     <View style={styles.containerStyle}>
-//         <Text>{office.name}</Text>
-//     </View>
-// }
 const styles = {
     tab: {
         margin: 10
     },
     tabHead: {
-        height: 40,
-        backgroundColor: '#e2d373'
+        height: 60,
+        backgroundColor: Colors.tabHead
     },
 
     tabWrapper: {
@@ -65,7 +59,7 @@ const styles = {
     },
     tabTitle: {
         padding: 10,
-        backgroundColor: '#f6f8fa'
+        backgroundColor: Colors.tabTitle
     },
     tabRow: {
         height: 28
@@ -76,18 +70,12 @@ const styles = {
     textTitle: {
         padding: 10,
         fontSize: 18,
-        color: '#ccbb53'
+        color: '#000000'
     },
     containerStyle: {
         borderColor: Colors.border,
         borderWidth: 1,
         padding: 20,
-        notSelected: {
-            backgroundColor: Colors.white
-        },
-        selected: {
-            backgroundColor: Colors.bg_floor
-        }
     },
     containerItemStyle: {
         flexDirection: 'row',

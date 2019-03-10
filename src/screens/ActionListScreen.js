@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { FlatList, StatusBar, SafeAreaView } from 'react-native';
 import axios from 'axios';
 import Action from '../components/Action';
-import { Api } from '../constants';
+import { Api , Colors} from '../constants';
+import Spinner from 'react-native-loading-spinner-overlay';
 
 
 class ActionListScreen extends Component {
@@ -13,6 +14,7 @@ class ActionListScreen extends Component {
         const course = this.props.navigation.getParam('course', null);
 
         this.state = {
+            isLoading: true,
             data: [],
             departmentId,
             course
@@ -29,11 +31,11 @@ class ActionListScreen extends Component {
             { headers: { 'Content-Type': 'multipart/form-data' } }
         ).then((response) => {
             console.log(response.data);
-            this.setState({ data: response.data });
+            this.setState({ data: response.data, isLoading: false });
         })
-        .catch((err) => {
-            console.log(err);
-        });
+            .catch((err) => {
+                console.log(err);
+            });
     }
 
     keyExtractor(action) {
@@ -49,7 +51,11 @@ class ActionListScreen extends Component {
     render() {
         return (
             <SafeAreaView>
-                <StatusBar backgroundColor="#54c4b6" />
+                <StatusBar backgroundColor={Colors.statusBarColor} />
+                <Spinner
+                    visible={this.state.isLoading}
+                    textContent={'Loading...'}
+                />
                 <FlatList
                     data={this.state.data}
                     keyExtractor={this.keyExtractor}

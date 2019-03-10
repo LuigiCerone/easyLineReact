@@ -21,21 +21,24 @@ const AppNavigator = createStackNavigator({
         screen: CourseListScreen,
         navigationOptions: {
             title: 'Dipartimenti',
-            headerStyle: { backgroundColor: '#b0e072' }
+            headerStyle: { backgroundColor: '#822627' }
+            // headerStyle: { backgroundColor: '#b0e072' }
         }
     },
     ActionListScreen: {
         screen: ActionListScreen,
         navigationOptions: {
             title: 'Corsi',
-            headerStyle: { backgroundColor: '#73e2d4' }
+            headerStyle: { backgroundColor: '#822627' }
+            // headerStyle: { backgroundColor: '#73e2d4' }
         }
     },
     OfficeScreen: {
         screen: OfficeScreen,
         navigationOptions: {
             title: 'Segreteria',
-            headerStyle: { backgroundColor: '#e2d373' }
+            headerStyle: { backgroundColor: '#822627' }
+            // headerStyle: { backgroundColor: '#e2d373' }
         }
     }
 }, {

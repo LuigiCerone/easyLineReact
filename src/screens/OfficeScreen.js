@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { StatusBar, SafeAreaView } from 'react-native';
 import axios from 'axios';
 import Office, { Text, View } from '../components/Office';
-import { Api } from '../constants';
+import { Api, Colors } from '../constants';
+import Spinner from 'react-native-loading-spinner-overlay';
 
 
 class OfficeScreen extends Component {
@@ -12,10 +13,9 @@ class OfficeScreen extends Component {
         const actionId = this.props.navigation.getParam('actionId', null);
 
         this.state = {
-            actionId
+            actionId,
+            isLoading: true
         };
-
-        console.debug('constructor');
     }
 
     componentDidMount() {
@@ -27,7 +27,7 @@ class OfficeScreen extends Component {
             { headers: { 'Content-Type': 'multipart/form-data' } }
         ).then((response) => {
             console.log(response.data);
-            this.setState({ officeData: response.data[0] });
+            this.setState({ officeData: response.data[0], isLoading: false });
         })
             .catch((err) => {
                 console.log(err);
@@ -38,11 +38,16 @@ class OfficeScreen extends Component {
     render() {
         return (
             <SafeAreaView>
-                <StatusBar backgroundColor="#ccbb53" />
-                {this.state.officeData &&
-                <Office
-                office={this.state.officeData}
+                <StatusBar backgroundColor={Colors.statusBarColor} />
+                
+                <Spinner
+                    visible={this.state.isLoading}
+                    textContent={'Loading...'}
                 />
+                {this.state.officeData &&
+                    <Office
+                        office={this.state.officeData}
+                    />
                 }
 
             </SafeAreaView>
@@ -52,3 +57,4 @@ class OfficeScreen extends Component {
 
 export default OfficeScreen;
 
+// <StatusBar backgroundColor="#ccbb53" />
