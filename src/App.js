@@ -60,6 +60,8 @@ const drawerScreens = createDrawerNavigator({
     drawerPosition: 'right',
     // 85% of screen width
     drawerWidth: () => Dimensions.get('window').width * 0.85,
+    // TODO: Color the drawer according to the view
+    //contentComponent: () => <DrawerMenu color={color} />
     contentComponent: DrawerMenu
 });
 

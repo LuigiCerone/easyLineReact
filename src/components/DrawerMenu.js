@@ -11,33 +11,37 @@ class DrawerMenu extends Component {
                 <Text style={styles.header}>EasyLine</Text>
                 <View style={styles.logoContainer}>
                     <Image
+                        //source={Images.univaqLogo}
                         source={Images.easyLineLogo}
                         style={styles.logoImage}
                     />
                     <Text style={styles.accessHeader}>Accesso EasyLine</Text>
                     <Text style={styles.accessText}>
-                        Accedi ai servizi Univaq con il tuo account provvisorio
+                        Accedi con le credenziali della segreteria virtuale Univaq
                     </Text>
+                </View>
+                <View>
                     <Input
-                        inputStyle={styles.labelStyle}
+                        //inputStyle={styles.labelStyle}
                         placeholderTextColor='#fff'
                         placeholder='Username'
                         textAlign='center'
                         //leftIcon={{ type: 'font-awesome', name: 'user', color: '#fff' }}
                     />
+                    <Input
+                        //inputStyle={styles.labelStyle}
+                        placeholderTextColor='#fff'
+                        placeholder='Password'
+                        textAlign='center'
+                        //leftIcon={{ type: 'font-awesome', name: 'key', color: '#fff' }}
+                    />
+                    <Button
+                        buttonStyle={styles.loginButton}
+                        title='Accedi'
+                        color='#6b1819'
+                    />
                 </View>
-                <Input
-                    inputStyle={styles.labelStyle}
-                    placeholderTextColor='#fff'
-                    placeholder='Password'
-                    textAlign='center'
-                    //leftIcon={{ type: 'font-awesome', name: 'key', color: '#fff' }}
-                />
-                <Button
-                    buttonStyle={styles.loginButton}
-                    title='Login'
-                    color='#6b1819'
-                />
+                <Text style={styles.recoverPassword}>Reupera Password</Text>
             </View>
         );
     }
@@ -46,7 +50,7 @@ class DrawerMenu extends Component {
 const styles = {
     drawerMenu: {
         backgroundColor: '#822627',
-        flex: 1
+        height: '100%'
     },
     header: {
         width: '100%',
@@ -58,10 +62,13 @@ const styles = {
         borderBottomColor: '#6b1819'
     },
     logoContainer: {
-        marginTop: 15,
+        marginTop: 20,
         alignItems: 'center'
     },
-    logoImage: {},
+    logoImage: {
+        width: 100,
+        height: 100
+    },
     accessHeader: {
         fontWeight: 'bold',
         color: '#fff',
@@ -76,11 +83,17 @@ const styles = {
         fontWeight: '200',
         textAlign: 'center'
     },
-    inputStyle: {
-        color: '#fff'
-    },
+    //inputStyle: {
+    //    color: '#fff'
+    //},
     loginButton: {
         color: '#6b1819'
+    },
+    recoverPassword: {
+        fontSize: 15,
+        margin: 20,
+        color: '#fff',
+        textAlign: 'right'
     }
 };
 
