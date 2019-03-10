@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Text, SectionList, SafeAreaView, StatusBar } from 'react-native';
 import axios from 'axios';
-import Course from '../components/Course';
-import { Api, Colors } from '../constants';
 import Spinner from 'react-native-loading-spinner-overlay';
+import Course from '../components/Course';
+
+import { Api, Colors } from '../constants';
 
 class CourseListScreen extends Component {
     constructor(props) {
@@ -72,7 +73,8 @@ class CourseListScreen extends Component {
                         return (<Course course={course.item} departmentId={departmentId} />);
                     }}
                     renderSectionHeader={({ section: { title } }) => (
-                        <Text style={{ fontWeight: 'bold' }}>{title}</Text>
+                        !this.state.isLoading &&
+                        <Text style={style.sectionHeaderStyle}>{title}</Text>
                     )}
                     sections={[
                         { title: 'Lauree Triennali', data: this.state.bcCourses },
@@ -85,5 +87,14 @@ class CourseListScreen extends Component {
     }
 }
 // <StatusBar backgroundColor="#8fbc54" />
+
+const style = {
+    sectionHeaderStyle: {
+        fontWeight: 'bold', 
+        fontSize: 24,
+        padding: 5,
+        margin: 5
+    }
+};
 
 export default CourseListScreen;
