@@ -34,10 +34,25 @@ class Office extends Component {
                 <Text style={styles.textTitle}>{office.name} </Text>
                 <Text style={styles.textTitle}>Email: {office.email} </Text>
                 <Table style={styles.tab}>
-                    <Row data={tableHead} style={styles.tabHead} textStyle={styles.tabText} flexArr={[1, 1, 1, 1, 1, 1]} />
+                    <Row
+                        data={tableHead}
+                        style={styles.tabHead}
+                        textStyle={[styles.tabText, { color: '#fff' }]}
+                        flexArr={[1, 1, 1, 1, 1, 1]}
+                    />
                     <TableWrapper style={styles.tabWrapper}>
-                        <Col data={tableTitle} heightArr={[28, 28]} textStyle={styles.tabText} style={styles.tabHead} />
-                        <Rows data={tableData} flexArr={[1, 1, 1, 1, 1]} style={styles.tabRow} textStyle={styles.tabText} />
+                        <Col
+                            data={tableTitle}
+                            heightArr={[28, 28]}
+                            textStyle={[styles.tabText, { color: '#fff' }]}
+                            style={styles.tabHead}
+                        />
+                        <Rows
+                            data={tableData}
+                            flexArr={[1, 1, 1, 1, 1]}
+                            style={styles.tabRow}
+                            textStyle={styles.tabText}
+                        />
                     </TableWrapper>
                 </Table>
             </View>
@@ -51,7 +66,7 @@ const styles = {
     },
     tabHead: {
         height: 60,
-        backgroundColor: Colors.tabHead
+        backgroundColor: Colors.tabHead,
     },
 
     tabWrapper: {

@@ -48,7 +48,7 @@ class DepartmentListScreen extends Component {
                 <StatusBar backgroundColor={Colors.statusBarColor} />
                 <Spinner
                     visible={this.state.isLoading}
-                    textContent={'Loading...'}
+                    textContent={'Caricamento...'}
                 />
                 <FlatList
                     data={this.state.data}

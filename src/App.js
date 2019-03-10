@@ -14,14 +14,14 @@ const AppNavigator = createStackNavigator({
         screen: DepartmentListScreen,
         navigationOptions: {
             title: 'EasyLine',
-            headerStyle: { backgroundColor: '#822627' }
+            //headerStyle: { backgroundColor: '#822627' }
         },
     },
     CourseListScreen: {
         screen: CourseListScreen,
         navigationOptions: {
             title: 'Dipartimenti',
-            headerStyle: { backgroundColor: '#822627' }
+            //headerStyle: { backgroundColor: '#822627' }
             // headerStyle: { backgroundColor: '#b0e072' }
         }
     },
@@ -29,7 +29,7 @@ const AppNavigator = createStackNavigator({
         screen: ActionListScreen,
         navigationOptions: {
             title: 'Corsi',
-            headerStyle: { backgroundColor: '#822627' }
+            //headerStyle: { backgroundColor: '#822627' }
             // headerStyle: { backgroundColor: '#73e2d4' }
         }
     },
@@ -37,7 +37,7 @@ const AppNavigator = createStackNavigator({
         screen: OfficeScreen,
         navigationOptions: {
             title: 'Segreteria',
-            headerStyle: { backgroundColor: '#822627' }
+            //headerStyle: { backgroundColor: '#822627' }
             // headerStyle: { backgroundColor: '#e2d373' }
         }
     }
@@ -45,6 +45,7 @@ const AppNavigator = createStackNavigator({
     initialRouteName: 'DepartmentListScreen',
     defaultNavigationOptions: ({ navigation }) => ({
         //headerTitleStyle: { textAlign: "center", flex:1  },
+        headerStyle: { backgroundColor: '#822627' },
         headerTintColor: '#fff',
         headerRight: (
             <Button
