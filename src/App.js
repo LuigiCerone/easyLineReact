@@ -62,6 +62,8 @@ const drawerScreens = createDrawerNavigator({
 }, {
     //initialRouteName: 'Homepage',
     drawerPosition: 'right',
+    drawerType: 'slide',
+    drawerLockMode: 'locked-closed',
     // 85% of screen width
     drawerWidth: () => Dimensions.get('window').width * 0.85,
     contentComponent: DrawerMenu,
