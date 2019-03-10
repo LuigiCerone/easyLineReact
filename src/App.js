@@ -2,6 +2,8 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { createStackNavigator, createAppContainer, createDrawerNavigator } from 'react-navigation';
 import { Button } from 'react-native-elements';
+import { Dimensions } from 'react-native';
+import DrawerMenu from './components/DrawerMenu';
 import DepartmentListScreen from './screens/DepartmentListScreen';
 import CourseListScreen from './screens/CourseListScreen';
 import ActionListScreen from './screens/ActionListScreen';
@@ -54,8 +56,11 @@ const AppNavigator = createStackNavigator({
 const drawerScreens = createDrawerNavigator({
     Homepage: AppNavigator
 }, {
-    initialRouteName: 'Homepage',
-    drawerPosition: 'right'
+    //initialRouteName: 'Homepage',
+    drawerPosition: 'right',
+    // 85% of screen width
+    drawerWidth: () => Dimensions.get('window').width * 0.85,
+    contentComponent: DrawerMenu
 });
 
 const App = createAppContainer(drawerScreens);
