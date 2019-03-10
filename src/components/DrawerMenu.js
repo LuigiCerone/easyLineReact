@@ -41,7 +41,7 @@ class DrawerMenu extends Component {
                         color='#6b1819'
                     />
                 </View>
-                <Text style={styles.recoverPassword}>Reupera Password</Text>
+                <Text style={styles.recoverPassword}>Recupera Password</Text>
             </View>
         );
     }

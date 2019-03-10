@@ -35,7 +35,11 @@ class CourseListScreen extends Component {
 
             // response.data.forEach((course) => {
             for (const course of response.data) {
-                if (course.type_label === 'LAUREA TRIENNALE') { bcCourses.push(course); } else if (course.type_label === 'LAUREA MAGISTRALE') { msCourses.push(course); }
+                if (course.type_label === 'LAUREA TRIENNALE') {
+                    bcCourses.push(course);
+                } else if (course.type_label === 'LAUREA MAGISTRALE') {
+                    msCourses.push(course);
+                }
             }
 
             this.setState({
@@ -52,7 +56,6 @@ class CourseListScreen extends Component {
         return `${department.id}`;
     }
 
-    debugger;
 
     // renderItem(course, id) {
     //     return (
