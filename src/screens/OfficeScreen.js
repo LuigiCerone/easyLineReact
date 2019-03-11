@@ -23,7 +23,7 @@ class OfficeScreen extends Component {
         const data = new FormData();
         data.append('id', this.state.actionId);
 
-        axios.post(Api.forth_page_endpoint,
+        axios.post(Api.fourth_page_endpoint,
             data,
             { headers: { 'Content-Type': 'multipart/form-data' } }
         ).then((response) => {

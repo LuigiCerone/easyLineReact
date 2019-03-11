@@ -4,7 +4,7 @@ const Api = {
     home_page_endpoint: `${baseUrl}/providers`,
     second_page_endpoint: `${baseUrl}/services`,
     third_page_endpoint: `${baseUrl}/services`,
-    forth_page_endpoint: `${baseUrl}/offices`
+    fourth_page_endpoint: `${baseUrl}/offices`
 };
 
 export { Api };
