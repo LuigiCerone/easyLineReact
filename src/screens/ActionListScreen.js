@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import Spinner from 'react-native-loading-spinner-overlay';
 import { FlatList, StatusBar, SafeAreaView } from 'react-native';
 import axios from 'axios';
 import Action from '../components/Action';
-import { Api , Colors} from '../constants';
-import Spinner from 'react-native-loading-spinner-overlay';
+import { Api, Colors } from '../constants';
 
 
 class ActionListScreen extends Component {
@@ -54,7 +54,7 @@ class ActionListScreen extends Component {
                 <StatusBar backgroundColor={Colors.statusBarColor} />
                 <Spinner
                     visible={this.state.isLoading}
-                    textContent={'Loading...'}
+                    textContent={'Caricamento...'}
                 />
                 <FlatList
                     data={this.state.data}

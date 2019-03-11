@@ -66,7 +66,7 @@ class CourseListScreen extends Component {
                 <StatusBar backgroundColor={Colors.statusBarColor} />
                 <Spinner
                     visible={this.state.isLoading}
-                    textContent={'Loading...'}
+                    textContent={'Caricamento...'}
                 />
                 <SectionList
                     renderItem={(course) => {

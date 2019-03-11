@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import Spinner from 'react-native-loading-spinner-overlay';
 import { StatusBar, SafeAreaView } from 'react-native';
 import axios from 'axios';
-import Spinner from 'react-native-loading-spinner-overlay';
 
 import Office from '../components/Office';
 import { Api, Colors } from '../constants';
@@ -43,7 +43,7 @@ class OfficeScreen extends Component {
 
                 <Spinner
                     visible={this.state.isLoading}
-                    textContent={'Loading...'}
+                    textContent={'Caricamento...'}
                 />
                 {this.state.officeData &&
                     <Office
