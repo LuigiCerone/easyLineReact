@@ -30,7 +30,7 @@ class Department extends Component {
                 <ListItem 
                 style={styles.containerStyle}
                     title={department.name}
-                    subtitle={department.name}
+                    //subtitle={department.name}
                     leftIcon={{ name: 'folder' }}
                     rightIcon={{ name: 'keyboard-arrow-right' }}
                 />

@@ -44,32 +44,18 @@ class Office extends Component {
                         <Rows data={tableData} flexArr={[1, 1, 1, 1, 1]} style={styles.tabRow} textStyle={styles.tabText} />
                     </TableWrapper>
                 </Table>
-
                 <Card
+                    containerStyle={{ borderRadius: 20 }}
                     title='Prenotazione ticket'
                 >
-                    <Text style={{ marginBottom: 10 }}>
-                        Qui puoi avere informazioni sulla coda attuale della segreteria.
-                    </Text>
-                    <View
-                        style={{
-                            margin: 10,
-                            borderBottomColor: 'black',
-                            borderBottomWidth: 1,
-                        }}
-                    />
-                    <Text>Persone in coda: {office.ticket_waiting}</Text>
-                    <Text>Ultimo ticket servito: {office.ticket_lastserved}</Text>
-                    <Text>Ultimo ticket emesso: {office.ticket_lastemitted}</Text>
-                    <View
-                        style={{
-                            margin: 10,
-                            borderBottomColor: 'black',
-                            borderBottomWidth: 1,
-                        }}
-                    />
+                    <Text>Qui puoi avere informazioni sulla coda attuale della segreteria.</Text>
+                    <View style={styles.infoLineContainer}>
+                        <Text>Persone in coda: {office.ticket_waiting}</Text>
+                        <Text>Ultimo ticket servito: {office.ticket_lastserved}</Text>
+                        <Text>Ultimo ticket emesso: {office.ticket_lastemitted}</Text>
+                    </View>
                     <Button
-                        backgroundColor={Colors.statusBarColor}
+                        //backgroundColor={Colors.statusBarColor}
                         buttonStyle={styles.buttonStyle}
                         title='Prenota ticket'
                     />
@@ -118,10 +104,19 @@ const styles = {
     },
     buttonStyle: {
         borderRadius: 0,
-        margin: 10,
+        marginTop: 10,
+        marginBottom: 10,
         backgroundColor: Colors.statusBarColor
+    },
+    infoLineContainer: {
+        paddingTop: 10,
+        paddingBottom: 10,
+        marginTop: 10,
+        marginBottom: 10,
+        borderColor: '#000',
+        borderTopWidth: 1,
+        borderBottomWidth: 1
     }
-
 };
 
 export default withNavigation(Office);

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, Image, Button, SafeAreaView, ScrollView } from 'react-native';
-import { Input } from 'react-native-elements';
+import { View, Text, Image, SafeAreaView, ScrollView } from 'react-native';
+import { Button, Icon, Input, Header } from 'react-native-elements';
 
 import Images from '../assets/images';
+import { Colors } from '../constants';
 
 class DrawerMenu extends Component {
     render() {
@@ -14,7 +15,27 @@ class DrawerMenu extends Component {
             >
                 <SafeAreaView>
                     {/*<Text style={[styles.header, { borderColor: this.props.borderColor }]}>EasyLine</Text>*/}
-                    <Text style={styles.header}>EasyLine</Text>
+                    {/*<Header
+                        backgroundColor='transparent'
+                        containerStyle={{ borderColor: '#000' }}
+                        leftComponent={
+                            <Button
+                                onPress={() => this.props.navigation.toggleDrawer()}
+                                buttonStyle={styles.headerButton}
+                                icon={<Icon name="keyboard-arrow-left" color="#fff" /> }
+                            />
+                        }
+                        centerComponent={{ text: 'EasyLine', style: { color: '#fff', fontSize: 20 } }}
+                    />*/}
+
+                    <View style={styles.headerContainer}>
+                        <Button
+                            onPress={() => this.props.navigation.toggleDrawer()}
+                            buttonStyle={styles.headerButton}
+                            icon={<Icon name="keyboard-arrow-left" color="#fff" />}
+                        />
+                        <Text style={styles.headerText}>EasyLine</Text>
+                    </View>
                     <View style={styles.logoContainer}>
                         <Image
                             //source={Images.univaqLogo}
@@ -45,7 +66,6 @@ class DrawerMenu extends Component {
                             buttonStyle={styles.loginButton}
                             title='Accedi'
                             //color={this.props.buttonColor}
-                            color='#6b1819'
                         />
                     </View>
                     <Text style={styles.recoverPassword}>Recupera Password</Text>
@@ -57,17 +77,27 @@ class DrawerMenu extends Component {
 
 const styles = {
     drawerMenu: {
-        backgroundColor: '#822627',
+        backgroundColor: Colors.drawerColor,
         flex: 1
     },
-    header: {
-        width: '100%',
+    headerContainer: {
+        flexDirection: 'row',
         padding: 15,
+        borderBottomWidth: 1,
+        borderBottomColor: '#6b1819',
+    },
+    headerText: {
+        width: '100%',
         fontSize: 20,
         color: '#fff',
         textAlign: 'center',
-        borderBottomWidth: 1,
-        borderBottomColor: '#6b1819'
+    },
+    headerButton: {
+        backgroundColor: 'transparent',
+        position: 'absolute',
+        zIndex: 2,
+        top: 0,
+        bottom: 0,
     },
     logoContainer: {
         marginTop: 20,
@@ -95,11 +125,15 @@ const styles = {
     //    color: '#fff'
     //},
     loginButton: {
-        //color: '#6b1819'
+        marginLeft: 8,
+        marginRight: 8,
+        borderRadius: 0,
+        backgroundColor: Colors.statusBarColor
     },
     recoverPassword: {
         fontSize: 15,
-        margin: 20,
+        marginTop: 20,
+        marginRight: 10,
         color: '#fff',
         textAlign: 'right'
     }

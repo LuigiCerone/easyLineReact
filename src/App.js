@@ -66,7 +66,7 @@ const drawerScreens = createDrawerNavigator({
     drawerLockMode: 'locked-closed',
     // 85% of screen width
     drawerWidth: () => Dimensions.get('window').width * 0.85,
-    contentComponent: DrawerMenu,
+    contentComponent: ({ navigation }) => <DrawerMenu navigation={navigation} />,
     // TODO: Color the drawer according to the view
     //contentComponent: () => (
     //    <DrawerMenu
