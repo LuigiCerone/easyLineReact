@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, Image, SafeAreaView, ScrollView } from 'react-native';
-import { Button, Icon, Input, Header } from 'react-native-elements';
+import { Button, Icon, Input } from 'react-native-elements';
 
 import Images from '../assets/images';
 import { Colors } from '../constants';
@@ -32,7 +32,7 @@ class DrawerMenu extends Component {
                         <Button
                             onPress={() => this.props.navigation.toggleDrawer()}
                             buttonStyle={styles.headerButton}
-                            icon={<Icon name="keyboard-arrow-left" color="#fff" />}
+                            icon={<Icon name="keyboard-arrow-right" color="#fff" />}
                         />
                         <Text style={styles.headerText}>EasyLine</Text>
                     </View>
