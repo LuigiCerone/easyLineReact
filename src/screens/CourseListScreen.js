@@ -50,9 +50,9 @@ class CourseListScreen extends Component {
                 msCourses
             });
         })
-            .catch((err) => {
-                console.log(err);
-            });
+        .catch((err) => {
+            console.log(err);
+        });
     }
 
     keyExtractor(department) {

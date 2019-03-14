@@ -33,9 +33,9 @@ class ActionListScreen extends Component {
             console.log(response.data);
             this.setState({ data: response.data, isLoading: false });
         })
-            .catch((err) => {
-                console.log(err);
-            });
+        .catch((err) => {
+            console.log(err);
+        });
     }
 
     keyExtractor(action) {

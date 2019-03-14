@@ -30,9 +30,9 @@ class OfficeScreen extends Component {
             console.log(response.data);
             this.setState({ officeData: response.data[0], isLoading: false });
         })
-            .catch((err) => {
-                console.log(err);
-            });
+        .catch((err) => {
+            console.log(err);
+        });
     }
 
 
